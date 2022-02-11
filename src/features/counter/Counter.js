@@ -25,8 +25,6 @@ export function Counter() {
 
 
   function onChange(e) {
-
-
     setIncrementAmount(e.target.value)
   }
 
@@ -45,30 +43,21 @@ export function Counter() {
           className={styles.button}
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
-
-        >
-          -
-        </button>
+        > - </button>
 
 
         <span className={styles.value}>{count}</span>
 
-        {count < 5 ?
-          <Button
-            // className={styles.button}
+        
+          {/* <Button
             onClick={() => dispatch(increment())}
             disabled={count < 5}
-          >
-            +
-          </Button>
-          :
+          > + </Button> */}
+          
           <button
             className={styles.button}
             onClick={() => dispatch(increment())}
-          >
-            +
-          </button>
-        }
+          > + </button>
 
 
       </div>
