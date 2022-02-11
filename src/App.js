@@ -4,11 +4,10 @@ import { Counter } from './features/counter/Counter';
 import './App.css';
 import Calibration from './components/calibration/Calibration';
 
-function App() {
-  return (
-
-
-    <div>
+class App extends React.Component{
+  render() {
+    return(
+      <div>
       <div className="App">
         <header className="App-header">
           
@@ -16,13 +15,14 @@ function App() {
           
           <Counter />
 
-          {/* <Calibration /> */}
+          <Calibration />
 
         </header>
       </div>
-      <button>rfh</button>
     </div>
-  );
+    )
+
+  }
 }
 
 export default App;
