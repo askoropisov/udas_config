@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
 import Calibration from './components/calibration/Calibration';
+import Test from './components/Test';
 
 class App extends React.Component{
   render() {
@@ -12,7 +13,9 @@ class App extends React.Component{
         <header className="App-header">
           
           <img src={logo} className="App-logo" alt="logo"/>
-          
+
+          <Test/>
+
           <Counter />
 
           <Calibration />
