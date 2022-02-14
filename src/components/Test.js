@@ -5,10 +5,12 @@ function Test() {
         <div>
             
             {/* Ссылка */}
-            <a href="https://yandex.ru/images/search?from=tabbar&text=котики" >
+            <a href="https://yandex.ru/images/search?from=tabbar&text=котики">
                 Котики
                 {/* <img src="C:\Code\WEB\udas_config\src\components\cat.jpg" alt =""/> */}
             </a>
+
+            
 
             {/* Перечисления */}
             <ol>
@@ -21,14 +23,16 @@ function Test() {
 
             <input type="button" value="testButton"/>
 
+            <p style={{color: "cadetblue"}}>Text</p>
+
             {/* Таблица */}
-            <table>
+            <table style={{color: "red"}}>
                 <tr><td>A</td><td>B</td></tr>
                 <tr><td>C </td><td>D</td></tr>
             </table>
 
             {/* Впадающий список */}
-            <select>
+            <select style={{marginTop: 20}}>
                 <option>City</option>
                 <option>Village</option>
             </select>
