@@ -1,6 +1,4 @@
-function Test() {
-
-
+function Test(props) {
     return (
         <div>
             
@@ -9,8 +7,29 @@ function Test() {
                 Котики
                 {/* <img src="C:\Code\WEB\udas_config\src\components\cat.jpg" alt =""/> */}
             </a>
-
-            
+            <hr></hr>
+            <nav>
+                <ul id="topmenu">
+                    <li class="hide">
+                        <a href="#main">Главная</a>
+                    </li>
+                    <li class="hide">
+                        <a href="#grad">Градуировка</a>
+                    </li>
+                    <li class="hide">
+                        <a href="#settings">Настройки</a>
+                    </li>
+                </ul>
+                <div id="main" class = "title hide" style={{display: "block"}}> 
+                    Menu
+                </div>
+                <div id="settings" class = "title hide" style={{display: "block"}}> 
+                    Настройки
+                </div>
+                <div id="grad" class = "title hide" style={{display: "block"}}> 
+                    Градуировка
+                </div>
+            </nav>
 
             {/* Перечисления */}
             <ol>

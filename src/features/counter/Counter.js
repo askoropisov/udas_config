@@ -10,7 +10,7 @@ import {
 } from './counterSlice';
 import styles from './Counter.module.css';
 import Button from 'react-bootstrap/Button'
-import Calibration from '../../components/calibration/Calibration';
+import Configuration from '../../components/calibration/Configuration';
 
 
 export function Counter() {
@@ -36,7 +36,7 @@ export function Counter() {
 
   return (
     <div>
-      <Calibration id={1} qwe={testFucntion} test={1} keys="2" />
+      <Configuration id={1} qwe={testFucntion} test={1} keys="2" />
 
       <div className={styles.row}>
         <button

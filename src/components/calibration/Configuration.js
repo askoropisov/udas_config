@@ -1,6 +1,6 @@
 
 
-function Calibration({ id, qwe, ...props }) {
+function Configuration({ id, qwe, ...props }) {
 
 
     return (
@@ -11,4 +11,4 @@ function Calibration({ id, qwe, ...props }) {
     )
 }
 
-export default Calibration
+export default Configuration
