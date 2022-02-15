@@ -6,6 +6,7 @@ import D2SConfig from '../Configuration/D2SConfig'
 import SpectrumConfig from '../Configuration/SpectrumConfig'
 import SpectrometersConfig from '../Configuration/SpectrometersConfig'
 import EScaleConfig from '../Configuration/EScaleConfig'
+import LoadConfig from '../Configuration/LoadConfig'
 
 function ConfigurationMenu(props){
 
@@ -25,7 +26,10 @@ function ConfigurationMenu(props){
                                 <Nav.Link eventKey="EScale">Ескале</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link eventKey="D2S">E2S</Nav.Link>
+                                <Nav.Link eventKey="D2S">D2S</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link eventKey="LoadConfig">Загрузка</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Col>
@@ -40,8 +44,11 @@ function ConfigurationMenu(props){
                             <Tab.Pane eventKey="EScale">
                                 <EScaleConfig/>
                             </Tab.Pane>
-                            <Tab.Pane eventKey="S2S">
+                            <Tab.Pane eventKey="D2S">
                                 <D2SConfig/>
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="LoadConfig">
+                                <LoadConfig/>
                             </Tab.Pane>
                         </Tab.Content>
                     </Col>

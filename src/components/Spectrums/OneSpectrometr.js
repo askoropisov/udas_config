@@ -9,12 +9,13 @@ function OneSpectrometr(props){
     return(
         <div>
             <h3>{type}</h3>
-            <h4>Порт: {port}</h4>
+            Порт: {port}
+            <br></br>
             <br></br>
             <h3>Время смерти:</h3>
-            <h4>Альфа: {Alpha}</h4>
-            <h4>Бета: {Beta}</h4>
-            <h4>Радон: {Rn}</h4>
+            Альфа: {Alpha} <br></br>
+            Бета: {Beta}<br></br>
+            Радон: {Rn}<br></br>
         </div>
     )
 }
