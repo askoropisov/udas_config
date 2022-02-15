@@ -6,7 +6,7 @@ function Main(props){
     return(
         <div>
             <h1>UDAS-0X</h1>
-            <hr></hr>
+
             <Navigation/>
             
         </div>

@@ -1,0 +1,31 @@
+.SpectrumNames {
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-left: 5%;
+    font-size: calc(10px + 2vmin);
+  }
+
+  .SpectrumTypes {
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-right: 5%;
+    font-size: calc(10px + 2vmin);
+  }
+
+  
+  .box {
+    width: 240px;
+    height: 40px;
+    border: 1px solid #999;
+    font-size: 19px;
+    color: #ffffff;
+    background-color: rgb(30, 45, 253);
+    border-radius: 5px;
+    border: none;
+  }
