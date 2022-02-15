@@ -2,7 +2,7 @@ function Spectrum(props){
 
     return(
         <div>
-            <h2>Спектрометр</h2>
+            <h2>Спектрометры</h2>
         </div>
     )
 }

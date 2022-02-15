@@ -5,7 +5,7 @@ function Main(props){
 
     return(
         <div>
-            <h1>UDAS-0X Главная</h1>
+            <h1>UDAS-0X</h1>
             <hr></hr>
             <Navigation/>
             

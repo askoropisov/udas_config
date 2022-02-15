@@ -1,6 +1,5 @@
 function FlowMeter(props){
 
-
     return(
         <div>
             <h2>Расходомер</h2>
