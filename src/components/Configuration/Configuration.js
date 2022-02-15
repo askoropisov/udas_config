@@ -1,4 +1,5 @@
 import Button from "react-bootstrap/esm/Button"
+import ConfigurationMenu from "../Controls/ConfigurationMenu"
 
 function Configuration(props) {
 
@@ -7,7 +8,10 @@ function Configuration(props) {
         <div>
             <h2>Конфигурация</h2>
             <Button>Загрузить конфигурацию</Button>
-            <button>Загрузить конфигурацию</button>
+            <br></br>
+
+
+            <ConfigurationMenu/>
         </div>
     )
 }

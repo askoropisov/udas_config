@@ -2,6 +2,12 @@ import Table from 'react-bootstrap/Table'
 
 function FlowMeterSensor(props){
 
+    let FM_A;
+    let FM_B;
+    let FM_C;
+    let FM_D;
+    
+
     return(
         <div>
             <h3>Датчик скорости потока</h3>
