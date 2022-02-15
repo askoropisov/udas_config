@@ -12,11 +12,6 @@ function Navigation(props) {
 
     return (
         <div>
-            {/* <ul className={styles.ul}>
-                <li className={styles.li}><Spectrum/></li>
-                <li className={styles.li}><FlowMeter/></li>
-                <li className={styles.li}><Configuration/></li>
-            </ul> */}
             <Tabs
                 defaultActiveKey="spectrum"
                 transition={false}

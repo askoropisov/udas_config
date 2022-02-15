@@ -25,19 +25,19 @@ function PressureSensor(props){
                 <tbody>
                     <tr>
                         <td width={400}>A</td>
-                        <td width={400}><input id="PS_A" value = {PS_A} type={'number'}/></td>
+                        <td width={400}><input id="PS_A" defaultValue={PS_A} type={'number'}/></td>
                     </tr>
                     <tr>
                         <td>B</td>
-                        <td><input id="PS_B" value = {PS_B}  type={'number'}/></td>
+                        <td><input id="PS_B" defaultValue={PS_B}  type={'number'}/></td>
                     </tr>
                     <tr>
                         <td>C</td>
-                        <td><input id="PS_C" value = {PS_C}  type={'number'}/></td>
+                        <td><input id="PS_C" defaultValue={PS_C}  type={'number'}/></td>
                     </tr>
                     <tr>
                         <td>D</td>
-                        <td><input id="PS_D" value = {PS_D} type={'number'}/></td>
+                        <td><input id="PS_D" defaultValue={PS_D} type={'number'}/></td>
                     </tr>
                 </tbody>
             </Table>

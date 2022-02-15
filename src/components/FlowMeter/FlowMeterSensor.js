@@ -26,19 +26,19 @@ function FlowMeterSensor(props){
                 <tbody>
                     <tr>
                         <td width={400}>A</td>
-                        <td width={400}><input id="FM_A" value={FM_A} type={'number'}/></td>
+                        <td width={400}><input id="FM_A" defaultValue={FM_A} type={'number'}/></td>
                     </tr>
                     <tr>
                         <td>B</td>
-                        <td><input id="FM_B" value={FM_B} type={'number'}/></td>
+                        <td><input id="FM_B" defaultValue={FM_B} type={'number'}/></td>
                     </tr>
                     <tr>
                         <td>C</td>
-                        <td><input id="FM_C" value={FM_C} type={'number'}/></td>
+                        <td><input id="FM_C" defaultValue={FM_C} type={'number'}/></td>
                     </tr>
                     <tr>
                         <td>D</td>
-                        <td><input id="FM_D" value={FM_D} type={'number'}/></td>
+                        <td><input id="FM_D" defaultValue={FM_D} type={'number'}/></td>
                     </tr>
                 </tbody>
             </Table>
