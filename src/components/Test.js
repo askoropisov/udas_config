@@ -5,10 +5,11 @@ function Test(props) {
             {/* Ссылка */}
             <a href="https://yandex.ru/images/search?from=tabbar&text=котики">
                 Котики
-                {/* <img src="C:\Code\WEB\udas_config\src\components\cat.jpg" alt =""/> */}
             </a>
             <hr></hr>
-            <nav>
+
+            
+            {/* <nav>
                 <ul id="topmenu">
                     <li class="hide">
                         <a href="#main">Главная</a>
@@ -29,7 +30,7 @@ function Test(props) {
                 <div id="grad" class = "title hide" style={{display: "block"}}> 
                     Градуировка
                 </div>
-            </nav>
+            </nav> */}
 
             {/* Перечисления */}
             <ol>

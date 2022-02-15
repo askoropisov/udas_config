@@ -1,11 +1,9 @@
-
-
-function Configuration({ id, qwe, ...props }) {
+function Configuration(props) {
 
 
     return (
         <div>
-            
+            <h2>Конфигурация</h2>
             
         </div>
     )
