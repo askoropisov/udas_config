@@ -1,62 +1,36 @@
 import './Spectrum.css'
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import React, { PureComponent } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine} from 'recharts';
+import React, { PureComponent, useEffect, useState } from 'react';
 
-const data = [
-    {
-        
-        uv: 4000,
-        pv: 2400,
-        amt: 2400,
-    },
-    {
-        
-        uv: 3000,
-        pv: 1398,
-        amt: 2210,
-    },
-    {
-        name: 'Page C',
-        uv: 2000,
-        pv: 9800,
-        amt: 2290,
-    },
-    {
-        
-        uv: 2780,
-        pv: 3908,
-        amt: 2000,
-    },
-    {
-        
-        uv: 1890,
-        pv: 4800,
-        amt: 2181,
-    },
-    {
-        name: 'Page F',
-        uv: 2390,
-        pv: 3800,
-        amt: 2500,
-    },
-    {
-        uv: 3490,
-        pv: 4300,
-        amt: 2100,
-    },
-];
-
-const renderLineChart = (
-    <LineChart width={1000} height={600} data={data}>
-        <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-        <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="name" />
-        <YAxis />
-    </LineChart>
-);
 
 function Spectrum(props) {
+
+    const [datas, setDatas] = useState([])
+
+
+    useEffect(() => {
+        setInterval(() => {
+            setDatas(new Array(500).fill(1).map(data => {
+                return ({
+                    Activity: (Math.random() * 10).toFixed(0),
+                    Count: (Math.random() * 1000).toFixed(0)
+                })
+            }))
+        }, 10000);
+    }, [])
+
+    const renderLineChart = (
+        <LineChart width={1200} height={700} data={datas}
+            margin={{ top: 5, right: 30, bottom: 10, left: 15 }}>
+            <Line type="monotone" dataKey="Count" stroke="#12bf51"animateNewValues={false} />
+            <CartesianGrid stroke="#ccc" />
+            <XAxis dataKey="Activity" fontSize={16}/>
+            <YAxis />
+            <Legend />
+            <Tooltip />
+        </LineChart>
+    );
 
     return (
         <div>
