@@ -12,7 +12,7 @@ function Navigation(props) {
 
     return (
         <div>
-            <Tabs
+            <Tabs 
                 defaultActiveKey="spectrum"
                 transition={false}
                 id="noanim-tab-example"

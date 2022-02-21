@@ -10,7 +10,7 @@ class App extends React.Component{
         <header className="App-header">
           
           <Main/>
-          <img src={logo} className="App-logo" alt="logo"/>
+          {/* <img src={logo} className="App-logo" alt="logo"/> */}
 
 
         </header>

@@ -14,7 +14,7 @@ function ConfigurationMenu(props){
         <div>
             <Tab.Container id="left-tabs-example" defaultActiveKey="SpectrometersConfig">
                 <Row>
-                    <Col sm={3}>
+                    <Col sm={3} md={3} xl={3}>
                         <Nav variant="pills" className="flex-column">
                             <Nav.Item>
                                 <Nav.Link eventKey="SpectrometersConfig">Спектрометры</Nav.Link>
@@ -33,8 +33,8 @@ function ConfigurationMenu(props){
                             </Nav.Item>
                         </Nav>
                     </Col>
-                    <Col sm={6}>
-                        <Tab.Content>
+                    <Col sm={6} md={6} xl={6} >
+                        <Tab.Content style={{margin:0}}>
                             <Tab.Pane eventKey="SpectrometersConfig">
                                 <SpectrometersConfig/>
                             </Tab.Pane>
