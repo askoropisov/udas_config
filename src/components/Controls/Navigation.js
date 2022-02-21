@@ -2,7 +2,6 @@ import Configuration from "../Configuration/Configuration"
 import FlowMeter from "../FlowMeter/FlowMeter"
 import Spectrum from "../Spectrums/Spectrum";
 
-import styles from '../Controls/Navigation.module.css';
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 

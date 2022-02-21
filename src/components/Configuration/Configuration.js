@@ -1,4 +1,4 @@
-import Button from "react-bootstrap/esm/Button"
+
 import ConfigurationMenu from "../Controls/ConfigurationMenu"
 
 function Configuration(props) {
