@@ -38,7 +38,7 @@ function Graduation(props) {
                 )
                 : null
             }
-
+            <br></br>
             <Button>Вычислить коэффициенты</Button>
 
         </div>
