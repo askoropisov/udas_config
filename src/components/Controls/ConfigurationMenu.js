@@ -2,7 +2,6 @@ import Tab from 'react-bootstrap/Tab'
 import Row from 'react-bootstrap/Row'
 import Nav from 'react-bootstrap/Nav'
 import Col from 'react-bootstrap/Col'
-import D2SConfig from '../Configuration/D2SConfig'
 import SpectrumConfig from '../Configuration/SpectrumConfig'
 import SpectrometersConfig from '../Configuration/SpectrometersConfig'
 import EScaleConfig from '../Configuration/EScaleConfig'
@@ -23,10 +22,7 @@ function ConfigurationMenu(props){
                                 <Nav.Link eventKey="SpectrumConfig">Спектр</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link eventKey="EScale">Ескале</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link eventKey="D2S">D2S</Nav.Link>
+                                <Nav.Link eventKey="EScale">Энергетическая калибровка</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link eventKey="LoadConfig">Загрузка</Nav.Link>
@@ -43,9 +39,6 @@ function ConfigurationMenu(props){
                             </Tab.Pane>
                             <Tab.Pane eventKey="EScale">
                                 <EScaleConfig/>
-                            </Tab.Pane>
-                            <Tab.Pane eventKey="D2S">
-                                <D2SConfig/>
                             </Tab.Pane>
                             <Tab.Pane eventKey="LoadConfig">
                                 <LoadConfig/>

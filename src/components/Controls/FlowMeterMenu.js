@@ -6,6 +6,7 @@ import FlowMeterSensor from '../FlowMeter/FlowMeterSensor'
 import PressureSensor from '../FlowMeter/PressureSensor'
 import TemperatureSensor from '../FlowMeter/TemperatureSensor'
 import Flap from '../FlowMeter/Flap'
+import Graduation from '../FlowMeter/Graduation'
 
 function FlowMeterMenu(props){
 
@@ -26,6 +27,9 @@ function FlowMeterMenu(props){
                                 <Nav.Link eventKey="TempSensor">Датчик температуры</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
+                                <Nav.Link eventKey="Graduation">Градуировка</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
                                 <Nav.Link eventKey="Flap">Заслонка</Nav.Link>
                             </Nav.Item>
                         </Nav>
@@ -40,6 +44,9 @@ function FlowMeterMenu(props){
                             </Tab.Pane>
                             <Tab.Pane eventKey="TempSensor">
                                 <TemperatureSensor/>
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="Graduation">
+                                <Graduation/>
                             </Tab.Pane>
                             <Tab.Pane eventKey="Flap">
                                 <Flap/>
