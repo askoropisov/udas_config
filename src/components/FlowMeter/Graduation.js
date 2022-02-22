@@ -9,7 +9,8 @@ function Graduation(props) {
 
     const onChangehandle = (e) => {
         const value = Number(e.target.value)
-        setCount(value)
+        if(value>0) setCount(value)
+        
     }
 
     const getData = () => {
