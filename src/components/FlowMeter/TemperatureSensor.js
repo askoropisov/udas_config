@@ -1,14 +1,16 @@
+import { useState } from "react"
+
 function TemperatureSensor(props){
 
-    var temperatur = 27;
+    const[temperature, SetTemperature] = useState(27);
+
     return(
 
         <div>
-            <h3>Датчик температуры</h3>
             <div >
                 <br></br>
                 <br></br>
-                Температура: {temperatur}°С
+                Температура: {temperature}°С
             </div>
         </div>
     )

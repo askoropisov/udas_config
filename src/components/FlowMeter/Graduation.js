@@ -9,7 +9,7 @@ function Graduation(props) {
 
     const onChangehandle = (e) => {
         const value = Number(e.target.value)
-        if(value>0) setCount(value)
+        if(value>=0) setCount(value)
         
     }
 
@@ -21,10 +21,11 @@ function Graduation(props) {
         console.log(count)
         console.log(new Array(count).fill(1))
     }, [count])
+
+
     return (
 
         <div>
-            <h3>Градуировка</h3>
 
             <div>
                 <br></br>

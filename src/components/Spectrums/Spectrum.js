@@ -8,6 +8,8 @@ import Button from 'react-bootstrap/esm/Button';
 function Spectrum(props) {
 
     const [datas, setDatas] = useState([])
+    const [peak1, setPeak1] = useState(0);
+    const [peak2, setPeak2] = useState(0);
 
 
     // useEffect(() => {
@@ -65,11 +67,13 @@ function Spectrum(props) {
                         <br></br>
                         <div>
                             <label for="pic1" style={{display: "block"}} >Пик 1</label>
-                            <input className='input' type="number" id="pic1" style={{display: "block", marginLeft: '50px'}}/>
+                            <input className='input' type="number" id="pic1" value = {peak1}
+                                   style={{display: "block", marginLeft: '50px'}} onChange={(e) => setPeak1(e.target.value)} />
                         </div>
                         <div>
                             <label for="pic2" style={{display: "block"}}>Пик 2</label>
-                            <input className='input' type="number" id="pic2" style={{display: "block" , marginLeft: '50px'}}/>
+                            <input className='input' type="number" id="pic2" value = {peak2}
+                                style={{display: "block" , marginLeft: '50px'}} onChange={(e) => setPeak2(e.target.value)}/>
                         </div>
                         <br></br>
                         <Button>Установить</Button>

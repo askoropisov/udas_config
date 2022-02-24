@@ -1,18 +1,20 @@
 import Button from 'react-bootstrap/esm/Button';
 import Table from 'react-bootstrap/Table'
+import { useState } from 'react';
 
 function FlowMeterSensor(props){
-
-    let FM_A=3;
-    let FM_B=4;
-    let FM_C=34;
-    let FM_D=19;
-    let value=FM_A+FM_B/2*FM_D-FM_C+10;
+ 
+    const[FM_A, SetFM_A]=useState(0);
+    const[FM_B, SetFM_B]=useState(0);
+    const[FM_C, SetFM_C]=useState(0);
+    const[FM_D, SetFM_D]=useState(0);
     
-
+    
+    const[value, SetValue]=useState(12);
+    
     return(
         <div>
-            <h3>Датчик скорости потока</h3>
+
             <br></br>
             <br></br>
 
@@ -25,26 +27,29 @@ function FlowMeterSensor(props){
                 </thead>
                 <tbody>
                     <tr>
-                        <td width={400}>A</td>
-                        <td width={400}><input id="FM_A" defaultValue={FM_A} type={'number'}/></td>
+                        <td width={200}>A</td>
+                        <td width={300}><input id="FM_A" Value={FM_A} type={'number'}
+                            className='input' onChange={(e) => SetFM_A(e.target.value)}/></td>
                     </tr>
                     <tr>
                         <td>B</td>
-                        <td><input id="FM_B" defaultValue={FM_B} type={'number'}/></td>
+                        <td><input id="FM_B" Value={FM_B} type={'number'}
+                             className='input' onChange={(e) => SetFM_B(e.target.value)}/></td>
                     </tr>
                     <tr>
                         <td>C</td>
-                        <td><input id="FM_C" defaultValue={FM_C} type={'number'}/></td>
+                        <td><input id="FM_C" Value={FM_C} type={'number'}
+                             className='input' onChange={(e) => SetFM_C(e.target.value)}/></td>
                     </tr>
                     <tr>
                         <td>D</td>
-                        <td><input id="FM_D" defaultValue={FM_D} type={'number'}/></td>
+                        <td><input id="FM_D" Value={FM_D} type={'number'}
+                             className='input' onChange={(e) => SetFM_D(e.target.value)}/></td>
                     </tr>
                 </tbody>
             </Table>
             <br></br>
             Значение: {value}
-            <br></br>
             <br></br>
             <Button>Установить</Button>
         </div>

@@ -1,20 +1,24 @@
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/esm/Button';
+import { useState } from 'react';
 
 function PressureSensor(props){
 
-    let PS_A=13;
-    let PS_B=-4;
-    var PS_C=29.7;
-    let PS_D=1;
-    let value=PS_A+PS_B/2*PS_D-PS_C;
+    const[PS_A, SetPS_A]=useState(0);
+    const[PS_B, SetPS_B]=useState(0);
+    const[PS_C, SetPS_C]=useState(0);
+    const[PS_D, SetPS_D]=useState(0);
+
+    const[preassure, SetPreassure]=useState(95);
+    const[value, SetValue]=useState(45);
+
 
     return(
         <div>
-            <h3>Датчик давления</h3>
-            <br></br>
-            <br></br>
 
+            Давление: {preassure} Па
+            <br></br>
+            <br></br>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -24,26 +28,29 @@ function PressureSensor(props){
                 </thead>
                 <tbody>
                     <tr>
-                        <td width={400}>A</td>
-                        <td width={400}><input id="PS_A" defaultValue={PS_A} type={'number'}/></td>
+                        <td width={200}>A</td>
+                        <td width={300}><input id="PS_A" Value={PS_A} type={'number'}
+                            onChange={(e) => SetPS_A(e.target.value)} className='input'/></td>
                     </tr>
                     <tr>
                         <td>B</td>
-                        <td><input id="PS_B" defaultValue={PS_B}  type={'number'}/></td>
+                        <td><input id="PS_B" Value={PS_B}  type={'number'}
+                             onChange={(e) => SetPS_B(e.target.value)} className='input'/></td>
                     </tr>
                     <tr>
                         <td>C</td>
-                        <td><input id="PS_C" defaultValue={PS_C}  type={'number'}/></td>
+                        <td><input id="PS_C" Value={PS_C}  type={'number'}
+                             onChange={(e) => SetPS_C(e.target.value)} className='input'/></td>
                     </tr>
                     <tr>
                         <td>D</td>
-                        <td><input id="PS_D" defaultValue={PS_D} type={'number'}/></td>
+                        <td><input id="PS_D" Value={PS_D} type={'number'}
+                             onChange={(e) => SetPS_D(e.target.value)} className='input'/></td>
                     </tr>
                 </tbody>
             </Table>
             <br></br>
             Значение: {value}
-            <br></br>
             <br></br>
             <Button>Установить</Button>
         </div>
