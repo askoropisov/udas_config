@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/esm/Button';
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 function Flap(props) {
 
@@ -20,7 +21,10 @@ function Flap(props) {
                 <Button disabled={status} onClick={() => SetStatus(true)}>Открыть</Button>
                 
                 <Button disabled={!status} onClick={() => SetStatus(false)}>Закрыть</Button>
+
             </div>
+            {/* <br></br>
+            <ProgressBar animated now={75} /> */}
         </div>
     )
 }

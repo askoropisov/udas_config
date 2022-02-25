@@ -1,17 +1,20 @@
+import { useState } from 'react';
+
 function EScaleConfig(prop) {
 
-    var duration = "00:00:30";
-    var range = 0;
-    var peak1 = 133;
-    var peak2 = 432;
 
-    var s0 = 2;
-    var s1 = 1.2;
-    var s2 = 0;
+    const [duration, SetDuration] = useState("00:00:40")
+    const [ range, SetRange ] = useState(0);
+    const [ peak1, SetPeak1 ] = useState(133);
+    const [ peak2, SetPeak ] = useState(432);
+
+    const[ s0, SetS0] = useState(2);
+    const[ s1, SetS1] = useState(1.2);
+    const[ s2, SetS2] = useState(0);
 
     return (
         <div>
-            <h3>Энергетическая калибровка</h3>
+            <h3>Энергетичес, SetSалибровка</h3>
             <div >
                 <br></br>
                 <div>

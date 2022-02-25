@@ -1,11 +1,13 @@
+import { useState } from 'react';
+
 function SpectrumConfig(props){
 
-    var AL=0;
-    var AR=6;
-    var BL=2;
-    var BR=12;
-    var ABL=1.2;
-    var ABR=3.5;
+    const[AL, SetAL]=useState(0);
+    const[AR, SetAR]=useState(6);
+    const[BL, SetBL]=useState(2);
+    const[BR, SetBR]=useState(12);
+    const[ABL, SetABL]=useState(1.2);
+    const[ABR, SetABR]=useState(3.5);
 
     return(
         <div>
