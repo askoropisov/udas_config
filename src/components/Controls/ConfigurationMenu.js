@@ -6,6 +6,7 @@ import SpectrumConfig from '../Configuration/SpectrumConfig'
 import SpectrometersConfig from '../Configuration/SpectrometersConfig'
 import EScaleConfig from '../Configuration/EScaleConfig'
 import LoadConfig from '../Configuration/LoadConfig'
+import CurrentLoops from '../Configuration/CurrentLoops'
 
 function ConfigurationMenu(props){
 
@@ -25,6 +26,9 @@ function ConfigurationMenu(props){
                                 <Nav.Link eventKey="EScale">Энергетическая калибровка</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
+                                <Nav.Link eventKey="CurrentLoops">Токовые петли</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
                                 <Nav.Link eventKey="LoadConfig">Загрузка</Nav.Link>
                             </Nav.Item>
                         </Nav>
@@ -39,6 +43,9 @@ function ConfigurationMenu(props){
                             </Tab.Pane>
                             <Tab.Pane eventKey="EScale">
                                 <EScaleConfig/>
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="CurrentLoops">
+                                <CurrentLoops/>
                             </Tab.Pane>
                             <Tab.Pane eventKey="LoadConfig">
                                 <LoadConfig/>
