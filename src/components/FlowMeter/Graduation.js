@@ -31,8 +31,11 @@ function Graduation(props) {
                 <br></br>
                 <label for="counterPoint">Введите количество точек для градуировки </label> <br></br>
                 <input className='input' type="number" id="counterPoint" value={count} onChange={onChangehandle} />
+                <br></br>
+                <Button onClick={() => setIsInputForm(true)}>Ввести значения</Button>
+                <br></br>
+                <Button onClick={() => setCount(0)}>Очистить</Button>   
             </div>
-            <Button onClick={() => setIsInputForm(true)}>Ввести значения</Button>
 
             {isInputForm ?
                 Array(count).fill(1).map((item, index) =>
@@ -40,8 +43,10 @@ function Graduation(props) {
                 )
                 : null
             }
-            <br></br>
-            <Button>Вычислить коэффициенты</Button>
+            <div>
+
+                <Button>Вычислить коэффициенты</Button>
+            </div>
 
         </div>
     )
