@@ -12,7 +12,6 @@ function CurrentLoops(props){
     return(
 
         <div>
-            <h3>Токовые петли</h3>
             
             <h4>Статус:</h4> Токовые петли {statusWord}
             <br></br>

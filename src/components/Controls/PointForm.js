@@ -9,6 +9,12 @@ function PointForm(props) {
     const [V1a, setV1a] = useState(0);
     const [V1b, setV1b] = useState(0);
 
+    const onChangehandleK = (e) => {
+        const value = Number(e.target.value)
+        if(value>=0) setK(value)
+        
+    }
+
 
     const getData = () => {
         props.getData()
@@ -30,11 +36,11 @@ function PointForm(props) {
             <div >
                 <div>
                     <label for="K">Номер канала АЦП</label> <br></br>
-                    <input className='input' type="number" id="K" value={K} defaultValue={0} onChange={(e) => setK(e.target.value)} />
+                    <input className='input' type="number" id="K" value={K} defaultValue={0} onChange={onChangehandleK} />
                 </div>
                 <div>
                     <label for="t">Время измерения</label> <br></br>
-                    <input className='input' type="number" id="t" value={t} defaultValue={0} onChange={(e) => setT(e.target.value)} />
+                    <input className='input' type="time" step="1" id="t" value={t} defaultValue={0} onChange={(e) => setT(e.target.value)} />
                 </div>
                 <div>
                     <label for="V1a">Начальное значение</label> <br></br>
