@@ -92,7 +92,6 @@ function Spectrum(props) {
                     <h4>Тип спектрометра</h4>
                     <select className="box">
                         <option>Основной</option>
-                        <option>Второстепенный</option>
                         <option>Фоновый</option>
                     </select>
                 </div>

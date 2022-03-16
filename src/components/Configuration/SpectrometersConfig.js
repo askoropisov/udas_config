@@ -6,15 +6,9 @@ function SpectrometersConfig(props) {
     return (
         <div>
             <br></br>
-            <div style={{display:'flex', justifyContent:"space-between",}}>
+            <div style={{display:'flex', justifyContent:"space-around",}}>
                 <OneSpectrometr
                     type="Основной"
-                    port={1}
-                    Alpha={1}
-                    Beta={1}
-                    Rn={1} />
-                <OneSpectrometr
-                    type="Второстепенный"
                     port={1}
                     Alpha={1}
                     Beta={1}
