@@ -18,7 +18,7 @@
     "recharts": "^2.1.9"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set HTTPS=true && set PORT=5001 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test"
   },
