@@ -1,6 +1,7 @@
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/esm/Button';
 import { useState } from 'react';
+import logo from './preassure.png'
 
 function PressureSensor(props){
 
@@ -15,7 +16,9 @@ function PressureSensor(props){
 
     return(
         <div>
-
+            
+            <img src={logo} width="100" alt ="temperature"></img>
+            <br></br>
             Давление: {preassure} Па
             <br></br>
             <br></br>

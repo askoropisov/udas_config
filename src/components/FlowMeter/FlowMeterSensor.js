@@ -1,6 +1,7 @@
 import Button from 'react-bootstrap/esm/Button';
 import Table from 'react-bootstrap/Table'
 import { useState } from 'react';
+import logo from './flowmeter.png'
 
 function FlowMeterSensor(props){
  
@@ -15,6 +16,7 @@ function FlowMeterSensor(props){
     return(
         <div>
 
+            <img src={logo} width="130" alt ="flowmeter"></img>
             <br></br>
             <br></br>
 

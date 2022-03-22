@@ -1,4 +1,5 @@
 import { useState } from "react"
+import logo from './term3.png'
 
 function TemperatureSensor(props){
 
@@ -10,7 +11,8 @@ function TemperatureSensor(props){
             <div >
                 <br></br>
                 <br></br>
-                Температура: {temperature}°С
+                Температура: {temperature}°С  <img src={logo} width="45" alt ="temperature"></img>
+                
             </div>
         </div>
     )
