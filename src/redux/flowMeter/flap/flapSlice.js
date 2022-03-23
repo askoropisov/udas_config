@@ -26,3 +26,5 @@ export const flapSlice = createSlice({
 export const { setIsOpen } = flapSlice.actions
 
 export default flapSlice.reducer;
+
+

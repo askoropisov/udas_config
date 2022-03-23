@@ -1,9 +1,9 @@
-import { useState } from "react"
+import { useSelector } from "react-redux"
 import logo from './term3.png'
 
 function TemperatureSensor(props){
 
-    const[temperature, SetTemperature] = useState(27);
+    const {temperature} = useSelector(state=>state.flowMeter.temperature)
 
     return(
 
