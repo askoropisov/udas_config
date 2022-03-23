@@ -1,24 +1,42 @@
 import Button from 'react-bootstrap/esm/Button';
 import Table from 'react-bootstrap/Table'
-import { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux"
 import logo from './flowmeter.png'
 
-function FlowMeterSensor(props){
- 
-    const[FM_A, SetFM_A]=useState(0);
-    const[FM_B, SetFM_B]=useState(0);
-    const[FM_C, SetFM_C]=useState(0);
-    const[FM_D, SetFM_D]=useState(0);
-    
-    
-    const[value, SetValue]=useState(12);
-    
-    return(
+import { setCoefFlowMeter } from '../../API/flowMeter/flowMeterSensor'
+import { setFlowA, setFlowB, setFlowC, setFlowD } from '../../redux/flowMeter/flowMeterSensor/flowMeterSlice';
+
+
+function FlowMeterSensor(props) {
+
+    const {
+        FM_A,
+        FM_B,
+        FM_C,
+        FM_D,
+        value,
+        flow } = useSelector(state => state.flowMeter.flowMeterSensor);
+
+
+    const dispatch = useDispatch();
+
+    const handleSetK = () => {
+        const data = {
+            a: FM_A,
+            b: FM_B,
+            c: FM_C,
+            d: FM_D,
+        }
+        dispatch(setCoefFlowMeter(data))
+    }
+
+    return (
         <div>
 
-            <img src={logo} width="130" alt ="flowmeter"></img>
+            <img src={logo} width="130" alt="flowmeter"></img>
             <br></br>
             <br></br>
+            Скорость потока {flow}
 
             <Table striped bordered hover>
                 <thead>
@@ -30,30 +48,30 @@ function FlowMeterSensor(props){
                 <tbody>
                     <tr>
                         <td width={200}>A</td>
-                        <td width={300}><input id="FM_A" Value={FM_A} type={'number'}
-                            className='input' onChange={(e) => SetFM_A(e.target.value)}/></td>
+                        <td width={300}><input id="FM_A" value={FM_A} type={'number'}
+                            className='input' onChange={(e) => dispatch(setFlowA(e.target.value))} /></td>
                     </tr>
                     <tr>
                         <td>B</td>
-                        <td><input id="FM_B" Value={FM_B} type={'number'}
-                             className='input' onChange={(e) => SetFM_B(e.target.value)}/></td>
+                        <td><input id="FM_B" value={FM_B} type={'number'}
+                            className='input' onChange={(e) => dispatch(setFlowB(e.target.value))} /></td>
                     </tr>
                     <tr>
                         <td>C</td>
-                        <td><input id="FM_C" Value={FM_C} type={'number'}
-                             className='input' onChange={(e) => SetFM_C(e.target.value)}/></td>
+                        <td><input id="FM_C" value={FM_C} type={'number'}
+                            className='input' onChange={(e) => dispatch(setFlowC(e.target.value))} /></td>
                     </tr>
                     <tr>
                         <td>D</td>
-                        <td><input id="FM_D" Value={FM_D} type={'number'}
-                             className='input' onChange={(e) => SetFM_D(e.target.value)}/></td>
+                        <td><input id="FM_D" value={FM_D} type={'number'}
+                            className='input' onChange={(e) => dispatch(setFlowD(e.target.value))} /></td>
                     </tr>
                 </tbody>
             </Table>
             <br></br>
             Значение: {value}
             <br></br>
-            <Button>Установить</Button>
+            <Button onClick={handleSetK}>Установить</Button>
         </div>
     )
 }

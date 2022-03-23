@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux"
+
 import Button from 'react-bootstrap/esm/Button';
-import ProgressBar from 'react-bootstrap/ProgressBar'
+import { setIsOpenFlapAsync } from '../../API/flowMeter/flap';
 
 function Flap(props) {
 
-    const[status, SetStatus]=useState(false);
+    const { isOpen } = useSelector(state => state.flowMeter.flap)
+    const dispatch = useDispatch()
 
     var statusWord;
-    if (status === true) statusWord = "открыта"
+    if (isOpen === true) statusWord = "открыта"
     else statusWord = "закрыта";
 
     return (
@@ -18,13 +20,11 @@ function Flap(props) {
             <h4>Статус:</h4> Заслонка {statusWord}
             <br></br>
             <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 50 }}>
-                <Button disabled={status} onClick={() => SetStatus(true)}>Открыть</Button>
-                
-                <Button disabled={!status} onClick={() => SetStatus(false)}>Закрыть</Button>
+                <Button disabled={isOpen} onClick={() => dispatch(setIsOpenFlapAsync(true))}>Открыть</Button>
+
+                <Button disabled={!isOpen} onClick={() => dispatch(setIsOpenFlapAsync(false))}>Закрыть</Button>
 
             </div>
-            {/* <br></br>
-            <ProgressBar animated now={75} /> */}
         </div>
     )
 }
