@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function SpectrumConfig(props){
 
-    const[AL, SetAL]=useState(0);
-    const[AR, SetAR]=useState(6);
-    const[BL, SetBL]=useState(2);
-    const[BR, SetBR]=useState(12);
-    const[ABL, SetABL]=useState(1.2);
-    const[ABR, SetABR]=useState(3.5);
+    const {
+        alphaR,
+        alphaL,
+        betaR,
+        betaL,
+        alphabetaR,
+        alphaBetaL,
+    } = useSelector(state=>state.configuration.spectrum);
 
     return(
         <div>
@@ -17,23 +19,23 @@ function SpectrumConfig(props){
                 <div >
                     <h3>Альфа</h3>
                     <br></br>
-                    Левый предел: {AL}
+                    Левый предел: {alphaL}
                     <br></br>
-                    Правый предел: {AR}
+                    Правый предел: {alphaR}
                 </div>
                 <div >
                     <h3>Бета</h3>
                     <br></br>
-                    Левый предел: {BL}
+                    Левый предел: {betaL}
                     <br></br>
-                    Правый предел: {BR}
+                    Правый предел: {betaR}
                 </div>
                 <div >
                     <h3>Альфа-Бета</h3>
                     <br></br>
-                    Левый предел: {ABL}
+                    Левый предел: {alphaBetaL}
                     <br></br>
-                    Правый предел: {ABR}
+                    Правый предел: {alphabetaR}
                 </div>
             </div>
         </div>

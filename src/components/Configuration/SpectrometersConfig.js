@@ -21,7 +21,7 @@ function SpectrometersConfig(props) {
             <div style={{display:'flex', justifyContent:"space-around",}}>
                 <div>
                     <h3>Основной</h3>
-                    порт: {primaryPort}
+                    Порт: {primaryPort}
                     <br></br> <br></br>
                     <h3>Время жизни частиц:</h3>
                     Альфа: {primaryA} <br></br>
@@ -30,7 +30,7 @@ function SpectrometersConfig(props) {
                 </div>
                 <div>
                     <h3>Фоновый</h3> 
-                    порт: {backPort}
+                    Порт: {backPort}
                     <br></br> <br></br>
                     <h3>Время жизни частиц:</h3>
                     Альфа: {backA} <br></br>

@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux"
 import Button from 'react-bootstrap/esm/Button';
+import { setIsOpenLoopsAsync } from "../../API/configuration/currentLoops";
 
 function CurrentLoops(props){
 
-    const[status, SetStatus]=useState(false);
+    const {isOpenLoops} = useSelector(state=>state.configuration.currentloops)
+    const dispatch = useDispatch()
 
     var statusWord;
-    if (status === true) statusWord = "включены"
+    if (isOpenLoops === true) statusWord = "включены"
     else statusWord = "выключены";
 
     return(
@@ -16,12 +18,11 @@ function CurrentLoops(props){
             <h4>Статус:</h4> Токовые петли {statusWord}
             <br></br>
             <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 50 }}>
-                <Button disabled={status} onClick={() => SetStatus(true)}>Включить</Button>
+                <Button disabled={isOpenLoops} onClick={() => dispatch(setIsOpenLoopsAsync(true))}>Включить</Button>
                 
-                <Button disabled={!status} onClick={() => SetStatus(false)}>Выключить</Button>
+                <Button disabled={!isOpenLoops} onClick={() =>  dispatch(setIsOpenLoopsAsync(false))}>Выключить</Button>
 
             </div>
-
         </div>
     )
 }
