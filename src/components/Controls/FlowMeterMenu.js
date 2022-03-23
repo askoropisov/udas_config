@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row'
 import Nav from 'react-bootstrap/Nav'
 import Col from 'react-bootstrap/Col'
 import FlowMeterSensor from '../FlowMeter/FlowMeterSensor'
-import PressureSensor from '../FlowMeter/PressureSensor'
+import PreassureSensor from '../FlowMeter/PreassureSensor'
 import TemperatureSensor from '../FlowMeter/TemperatureSensor'
 import Flap from '../FlowMeter/Flap'
 import Graduation from '../FlowMeter/Graduation'
@@ -13,12 +13,12 @@ function FlowMeterMenu(props){
     return(
 
         <div>
-            <Tab.Container id="left-tabs-example" defaultActiveKey="PressureSensor">
+            <Tab.Container id="left-tabs-example" defaultActiveKey="PreassureSensor">
                 <Row>
                     <Col sm={3}>
                         <Nav variant="pills" className="flex-column" style={{cursor:'pointer'}}>
                             <Nav.Item>
-                                <Nav.Link eventKey="PressureSensor">Датчик давления</Nav.Link>
+                                <Nav.Link eventKey="PreassureSensor">Датчик давления</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link eventKey="FlowSensor">Датчик скорости потока</Nav.Link>
@@ -36,8 +36,8 @@ function FlowMeterMenu(props){
                     </Col>
                     <Col sm={6}>
                         <Tab.Content >
-                            <Tab.Pane eventKey="PressureSensor">
-                                <PressureSensor/>
+                            <Tab.Pane eventKey="PreassureSensor">
+                                <PreassureSensor/>
                             </Tab.Pane>
                             <Tab.Pane eventKey="FlowSensor">
                                 <FlowMeterSensor/>

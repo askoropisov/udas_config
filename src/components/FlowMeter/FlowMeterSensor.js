@@ -35,8 +35,9 @@ function FlowMeterSensor(props) {
 
             <img src={logo} width="130" alt="flowmeter"></img>
             <br></br>
+            Скорость потока: {flow}
             <br></br>
-            Скорость потока {flow}
+            <br></br>
 
             <Table striped bordered hover>
                 <thead>
