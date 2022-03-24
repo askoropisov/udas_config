@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { setCoefPreassureMeter } from "../../../API/flowMeter/preassureSensor"
+import { getCoefPreassureMeter, setCoefPreassureMeter } from "../../../API/flowMeter/preassureSensor"
 
 const init = {
     PS_A: -5,
@@ -34,6 +34,19 @@ export const preassureSlice = createSlice({
         builder.addCase(setCoefPreassureMeter.rejected, (state, action) => {
             console.log(action)
         })
+        builder.addCase(getCoefPreassureMeter.fulfilled, (state, action) => {
+            const data = action.payload
+            console.log(data)
+            state.PS_A = data.polynom.a
+            state.PS_D = data.polynom.b
+            state.PS_C = data.polynom.c 
+            state.PS_D = data.polynom.d
+            state.preassure=data.preassure
+            state.value=data.value
+        })
+        builder.addCase(getCoefPreassureMeter.rejected, (state, action) =>{
+            console.log(action)
+        })
     }
 })
 
@@ -43,4 +56,4 @@ export const {
     setPreassureC,
     setPreassureD } = preassureSlice.actions;
 
-    export default preassureSlice.reducer;
+export default preassureSlice.reducer;

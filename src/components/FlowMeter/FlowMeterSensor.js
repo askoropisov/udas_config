@@ -2,12 +2,20 @@ import Button from 'react-bootstrap/esm/Button';
 import Table from 'react-bootstrap/Table'
 import { useDispatch, useSelector } from "react-redux"
 import logo from './flowmeter.png'
+import { useEffect } from 'react';
 
-import { setCoefFlowMeter } from '../../API/flowMeter/flowMeterSensor'
+import { getCoefFlowMeter, setCoefFlowMeter } from '../../API/flowMeter/flowMeterSensor'
 import { setFlowA, setFlowB, setFlowC, setFlowD } from '../../redux/flowMeter/flowMeterSensor/flowMeterSlice';
 
 
 function FlowMeterSensor(props) {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getCoefFlowMeter())
+            
+    }, [])
 
     const {
         FM_A,
@@ -17,8 +25,6 @@ function FlowMeterSensor(props) {
         value,
         flow } = useSelector(state => state.flowMeter.flowMeterSensor);
 
-
-    const dispatch = useDispatch();
 
     const handleSetK = () => {
         const data = {

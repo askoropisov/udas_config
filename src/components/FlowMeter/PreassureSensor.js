@@ -3,9 +3,17 @@ import Button from 'react-bootstrap/esm/Button';
 import { useDispatch, useSelector } from "react-redux"
 import logo from './preassure.png'
 import { setPreassureA, setPreassureB, setPreassureC, setPreassureD } from '../../redux/flowMeter/preassureSensor/preassureSensorSlice';
-import { setCoefPreassureMeter } from '../../API/flowMeter/preassureSensor';
+import { getCoefPreassureMeter, setCoefPreassureMeter } from '../../API/flowMeter/preassureSensor';
+import { useEffect } from 'react';
 
-function PreassureSensor(props){
+function PreassureSensor(props) {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getCoefPreassureMeter())
+            
+    }, [])
 
     const {
         PS_A,
@@ -16,7 +24,6 @@ function PreassureSensor(props){
         preassure } = useSelector(state => state.flowMeter.preassureSensor);
 
 
-    const dispatch = useDispatch();
 
     const handleSetK = () => {
         const data = {
@@ -29,10 +36,10 @@ function PreassureSensor(props){
     }
 
 
-    return(
+    return (
         <div>
-            
-            <img src={logo} width="100" alt ="temperature"></img>
+
+            <img src={logo} width="100" alt="temperature"></img>
             <br></br>
             Давление: {preassure} Па
             <br></br>
@@ -48,22 +55,22 @@ function PreassureSensor(props){
                     <tr>
                         <td width={200}>A</td>
                         <td width={300}><input id="PS_A" value={PS_A} type={'number'}
-                            onChange={(e) => dispatch(setPreassureA(e.target.value))} className='input'/></td>
+                            onChange={(e) => dispatch(setPreassureA(e.target.value))} className='input' /></td>
                     </tr>
                     <tr>
                         <td>B</td>
-                        <td><input id="PS_B" value={PS_B}  type={'number'}
-                             onChange={(e) => dispatch(setPreassureB(e.target.value))} className='input'/></td>
+                        <td><input id="PS_B" value={PS_B} type={'number'}
+                            onChange={(e) => dispatch(setPreassureB(e.target.value))} className='input' /></td>
                     </tr>
                     <tr>
                         <td>C</td>
-                        <td><input id="PS_C" value={PS_C}  type={'number'}
-                             onChange={(e) => dispatch(setPreassureC(e.target.value))} className='input'/></td>
+                        <td><input id="PS_C" value={PS_C} type={'number'}
+                            onChange={(e) => dispatch(setPreassureC(e.target.value))} className='input' /></td>
                     </tr>
                     <tr>
                         <td>D</td>
                         <td><input id="PS_D" value={PS_D} type={'number'}
-                             onChange={(e) => dispatch(setPreassureD(e.target.value))} className='input'/></td>
+                            onChange={(e) => dispatch(setPreassureD(e.target.value))} className='input' /></td>
                     </tr>
                 </tbody>
             </Table>

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { setCoefFlowMeter } from "../../../API/flowMeter/flowMeterSensor"
+import { getCoefFlowMeter, setCoefFlowMeter } from "../../../API/flowMeter/flowMeterSensor"
 
 
 const init = {
@@ -33,6 +33,19 @@ export const flowMeterSlice = createSlice({
             state.isOpen = action.payload
         })
         builder.addCase(setCoefFlowMeter.rejected, (state, action) => {
+            console.log(action)
+        })
+        builder.addCase(getCoefFlowMeter.fulfilled, (state, action)=>{
+            const data = action.payload
+            console.log(data)
+            state.FM_A = data.polynom.a
+            state.FM_D = data.polynom.b
+            state.FM_C = data.polynom.c 
+            state.FM_D = data.polynom.d
+            state.flow=data.flow
+            state.value=data.value
+        })
+        builder.addCase(getCoefFlowMeter.rejected, (state, action) =>{
             console.log(action)
         })
     }
