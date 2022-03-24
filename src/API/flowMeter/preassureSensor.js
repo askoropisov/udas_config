@@ -2,7 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
-
 export const setCoefPreassureMeter = createAsyncThunk(
     'flowmeter/preassureSensor/setCoefPreassure',
     async (k) => {
@@ -15,4 +14,15 @@ export const setCoefPreassureMeter = createAsyncThunk(
             )
         return response
     },
+)
+
+export const getCoefPreassureMeter = createAsyncThunk(
+    'flowmeter/preassureSensor/getCoefPreassure',
+    async (g) =>{
+        await axios.get("api/flowmeter/preassure", g)
+        .then(res => {
+            const value = res.data;
+            this.setState({value});
+        })
+    }
 )

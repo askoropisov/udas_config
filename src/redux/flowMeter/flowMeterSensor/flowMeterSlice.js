@@ -7,8 +7,8 @@ const init = {
     FM_B: 2,
     FM_C: 3,
     FM_D: 4,
-    value: 0,
-    flow: 0
+    value: 11,
+    flow: 4
 }
 
 export const flowMeterSlice = createSlice({

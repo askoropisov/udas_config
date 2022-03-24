@@ -8,5 +8,5 @@ export const setIsOpenFlapAsync = createAsyncThunk(
             .then(res => Promise.resolve(isOn))
             .catch(err => Promise.reject())
         return response
-    }
+    },
 ) 

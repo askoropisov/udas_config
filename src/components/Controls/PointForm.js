@@ -29,7 +29,6 @@ function PointForm(props) {
     }
 
     return (
-
         <div>
             <br></br>
             <h3>Введите параметр #{props.id}</h3>

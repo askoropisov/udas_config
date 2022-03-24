@@ -6,8 +6,8 @@ const init = {
     PS_B: 2,
     PS_C: 10,
     PS_D: 39,
-    value: 0,
-    preassure: 0
+    value: 55,
+    preassure: 140
 }
 
 export const preassureSlice = createSlice({

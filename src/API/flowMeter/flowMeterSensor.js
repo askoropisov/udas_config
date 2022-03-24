@@ -2,7 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
-
 export const setCoefFlowMeter = createAsyncThunk(
     'flowmeter/flowMeterSensor/setCoef',
     async (k) => {
