@@ -11,6 +11,8 @@ function EScaleConfig(prop) {
             
     }, [])
 
+
+    
     const {
         Peak356,
         Peak81,
