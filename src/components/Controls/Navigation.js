@@ -7,8 +7,6 @@ import Tab from 'react-bootstrap/Tab'
 
 function Navigation(props) {
 
-
-
     return (
         <div>
             <Tabs 

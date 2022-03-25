@@ -1,21 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getEscale } from "../../API/configuration/Escale"
+import { getAllConfiguration } from "../../API/configuration/generalConfiguration"
 
 const init = {
     Peak356: 0,
     Peak81: 0,
     Range: 0,
-    Duration: {
-        hours: "00",
-        minutes: "00",
-        seconds: "00"
-    },
+    // Duration: {
+    //     hours: "00",
+    //     minuts: "00",
+    //     seconds: "00"
+    // },
     S0: 0,
     S1: 0.5,
     S2: 0
 }
 
-export const EScaleSlice = createSlice({
+export const EScaleConfigSlice = createSlice({
     name: "configuration/escale",
     initialState: init,
     reducers: {
@@ -24,24 +24,37 @@ export const EScaleSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(getEscale.fulfilled, (state, action) => {
+        // builder.addCase(getEscale.fulfilled, (state, action) => {
+        //     const data = action.payload
+        //     console.log(data)
+        //     state.Peak356 = data.peak356
+        //     state.Peak81 = data.peak81
+        //     state.Range = data.range
+        //     state.Duration = data.duration
+        //     state.S0 = data.s0
+        //     state.S1 = data.s1
+        //     state.S2 = data.s2
+        // })
+        // builder.addCase(getEscale.rejected, (state, action) => {
+        //     console.log(action)
+        // })
+        builder.addCase(getAllConfiguration.fulfilled, (state, action) => {
             const data = action.payload
             console.log(data)
-            state.Peak356 = data.peak356
-            state.Peak81 = data.peak81
-            state.Range = data.range
-            state.Duration = data.duration
-            state.S0 = data.s0
-            state.S1 = data.s1
-            state.S2 = data.s2
+            state.Peak356 = data.eScaleModel.peak356
+            state.Peak81 = data.eScaleModel.peak81
+            state.Range = data.eScaleModel.range
+            //state.Duration = data.eScaleModel.duration
+            state.S0 = data.eScaleModel.s0
+            state.S1 = data.eScaleModel.s1
+            state.S2 = data.eScaleModel.s2
         })
-        builder.addCase(getEscale.rejected, (state, action) => {
-            console.log(action)
+        builder.addCase(getAllConfiguration.rejected, (state, action) => {
+                console.log(action)
         })
-
     }
 })
 
-export const { setEScale } = EScaleSlice.actions
+export const { setEScale } = EScaleConfigSlice.actions
 
-export default EScaleSlice.reducer;
+export default EScaleConfigSlice.reducer;

@@ -17,7 +17,7 @@ function EScaleConfig(prop) {
         Peak356,
         Peak81,
         Range,
-        Duration,
+        //Duration,
         S0,
         S1,
         S2 } = useSelector(state=>state.configuration.escale)
@@ -30,7 +30,7 @@ function EScaleConfig(prop) {
             <div >
                 <br></br>
                 <div>
-                    Продолжительность: {Duration.hours}:{Duration.minutes}:{Duration.seconds} <br></br>
+                    {/* Продолжительность: {Duration} <br></br> */}
                     Диапазон: левое значение: {Range}, правое значение: {Range} <br></br>
                     Пик-356: {Peak356} <br></br>
                     Пик-81: {Peak81} <br></br>

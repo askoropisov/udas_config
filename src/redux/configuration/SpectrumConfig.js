@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getSpectrum } from "../../API/configuration/Spectrum"
+import { getAllConfiguration } from "../../API/configuration/generalConfiguration"
 
 const init = {
     alphaR: 12,
@@ -19,17 +19,30 @@ export const SpectrumSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(getSpectrum.fulfilled, (state, action) => {
+        // builder.addCase(getSpectrum.fulfilled, (state, action) => {
+        //     const data = action.payload
+        //     console.log(data)
+        //     state.alphaL = data.alpha.left
+        //     state.alphaR = data.alpha.right
+        //     state.betaL = data.beta.left
+        //     state.betaR = data.beta.right
+        //     state.alphaBetaL=data.alphaBeta.left
+        //     state.alphabetaR=data.alphaBeta.right
+        // })
+        // builder.addCase(getSpectrum.rejected, (state, action) =>{
+        //     console.log(action)
+        // })
+        builder.addCase(getAllConfiguration.fulfilled, (state, action) => {
             const data = action.payload
             console.log(data)
-            state.alphaL = data.alpha.left
-            state.alphaR = data.alpha.right
-            state.betaL = data.beta.left
-            state.betaR = data.beta.right
-            state.alphaBetaL=data.alphaBeta.left
-            state.alphabetaR=data.alphaBeta.right
+            state.alphaL = data.spectrumConfigModel.alpha.left
+            state.alphaR = data.spectrumConfigModel.alpha.right
+            state.betaL = data.spectrumConfigModel.beta.left
+            state.betaR = data.spectrumConfigModel.beta.right
+            state.alphaBetaL=data.spectrumConfigModel.alphaBeta.left
+            state.alphabetaR=data.spectrumConfigModel.alphaBeta.right
         })
-        builder.addCase(getSpectrum.rejected, (state, action) =>{
+        builder.addCase(getAllConfiguration.rejected, (state, action) =>{
             console.log(action)
         })
     }
