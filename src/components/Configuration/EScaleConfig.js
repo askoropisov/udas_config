@@ -1,6 +1,15 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from 'react';
+import { getEscale } from "../../API/configuration/Escale";
 
 function EScaleConfig(prop) {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getEscale())
+            
+    }, [])
 
     const {
         Peak356,
@@ -19,8 +28,8 @@ function EScaleConfig(prop) {
             <div >
                 <br></br>
                 <div>
-                    Продолжительность: {Duration} <br></br>
-                    Диапазон: {Range} <br></br>
+                    Продолжительность: {Duration.hours}:{Duration.minutes}:{Duration.seconds} <br></br>
+                    Диапазон: левое значение: {Range}, правое значение: {Range} <br></br>
                     Пик-356: {Peak356} <br></br>
                     Пик-81: {Peak81} <br></br>
                 </div>

@@ -17,7 +17,7 @@ export const temperatureSlice = createSlice({
         builder.addCase(getTemperature.fulfilled, (state, action)=>{
             const data = action.payload
             console.log(data);
-            state.temperature=data.temperature;
+            state.temperature = data;
         })
         builder.addCase(getTemperature.rejected, (state, action) =>{
             console.log(action)

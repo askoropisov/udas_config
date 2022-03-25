@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { getSpectrometers } from "../../API/configuration/Spectrometers"
 
 const init = {
     primaryPort:1400,
@@ -20,6 +21,21 @@ export const SpectrometersSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
+        builder.addCase(getSpectrometers.fulfilled, (state, action) => {
+            const data = action.payload
+            console.log(data)
+            state.primaryPort=data.primary.port
+            state.backPort=data.background.port
+            state.primaryA=data.primary.deadTime.alpha
+            state.primaryB=data.primary.deadTime.beta
+            state.primaryRn=data.primary.deadTime.rn
+            state.backA=data.background.deadTime.alpha
+            state.backB=data.background.deadTime.beta
+            state.backRn=data.background.deadTime.rn
+        })
+        builder.addCase(getSpectrometers.rejected, (state, action) =>{
+            console.log(action)
+        })
 
     }
 })

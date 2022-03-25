@@ -1,6 +1,15 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from 'react';
+import { getSpectrometers } from "../../API/configuration/Spectrometers";
 
 function SpectrometersConfig(props) {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getSpectrometers())
+            
+    }, [])
 
     const {
         primaryPort,
