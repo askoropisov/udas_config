@@ -1,13 +1,19 @@
 import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from 'react';
 
 import Button from 'react-bootstrap/esm/Button';
-import { setIsOpenFlapAsync } from '../../API/flowMeter/flap';
+import { getFlap, setIsOpenFlapAsync } from '../../API/flowMeter/flap';
 
 function Flap(props) {
 
-    const { isOpen } = useSelector(state => state.flowMeter.flap)
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(getFlap())
+            
+    }, [])
+
+    const { isOpen } = useSelector(state => state.flowMeter.flap)
     var statusWord;
     if (isOpen === true) statusWord = "открыта"
     else statusWord = "закрыта";

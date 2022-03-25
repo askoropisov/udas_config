@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { setIsOpenFlapAsync } from "../../../API/flowMeter/flap";
+import { getFlap, setIsOpenFlapAsync } from "../../../API/flowMeter/flap";
 
 const init = {
     isOpen: false
@@ -18,6 +18,14 @@ export const flapSlice = createSlice({
             state.isOpen = action.payload
         })
         builder.addCase(setIsOpenFlapAsync.rejected, (state, action) => {
+            console.log(action)
+        })
+        builder.addCase(getFlap.fulfilled, (state, action)=>{
+            const data = action.payload
+            console.log(data)
+            state.isOpen = data;
+        })
+        builder.addCase(getFlap.rejected, (state, action) =>{
             console.log(action)
         })
     }

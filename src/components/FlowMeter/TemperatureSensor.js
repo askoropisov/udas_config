@@ -1,10 +1,18 @@
-import { useSelector } from "react-redux"
 import logo from './term3.png'
 import React from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux"
+import { getTemperature } from '../../API/flowMeter/temperature';
 
 function TemperatureSensor(props){
 
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getTemperature())
+            
+    }, [])
     
 
     const {temperature} = useSelector(state=>state.flowMeter.temperature)
@@ -15,7 +23,7 @@ function TemperatureSensor(props){
             <div >
                 <br></br>
                 <br></br>
-                Температура: {temperature}°С  <img src={logo} width="45" alt ="temperature"></img>
+                Температура: {temperature} °С  <img src={logo} width="45" alt ="temperature"></img>
                 
             </div>
         </div>
