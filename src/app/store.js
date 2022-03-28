@@ -8,6 +8,8 @@ import flapReducer from '../redux/flowMeter/flap/flapSlice';
 import flowMeterSlice from '../redux/flowMeter/flowMeterSensor/flowMeterSlice';
 import preassureSlice from '../redux/flowMeter/preassureSensor/preassureSensorSlice';
 import temperatureSlice from '../redux/flowMeter/temperature/temperatureSlice';
+import peaksSlice from '../redux/main/peaksSlice';
+import spectrumTypeSlice from '../redux/main/spectrumTypeSlice';
 
 export const store = configureStore({
   reducer: {
@@ -22,6 +24,10 @@ export const store = configureStore({
       spectrometers: SpectrometersSlice,
       spectrum: SpectrumSlice,
       currentloops: currentLoopsSlice,
+    }),
+    main: combineReducers({
+      spectrumType: spectrumTypeSlice,
+      peaks: peaksSlice, 
     }),
     counter: counterReducer,
   },

@@ -1,39 +1,50 @@
 import './Spectrum.css'
-
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine } from 'recharts';
-import React, { PureComponent, useEffect, useState } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/esm/Button';
+import { useDispatch, useSelector } from "react-redux"
+import { getPeaks, setPeaks } from '../../API/main/peaks';
+import { setPeak356, setPeak81 } from '../../redux/main/peaksSlice';
 
 
 function Spectrum(props) {
 
+    const dispatch = useDispatch();
     const [datas, setDatas] = useState([])
-    const [peak1, setPeak1] = useState(0);
-    const [peak2, setPeak2] = useState(0);
-
-
-    // useEffect(() => {
-    //     setInterval(() => {
-    //         setDatas(new Array(500).fill(1).map(data => {
-    //             return ({
-    //                 Activity: (Math.random() * 10).toFixed(0),
-    //                 Count: (Math.random() * 1000).toFixed(0)
-    //             })
-    //         }))
-    //     }, 10000);
-    // }, [])
 
     useEffect(() => {
-        setDatas(new Array(500).fill(1).map(data => {
+        dispatch(getPeaks())
+            
+    }, [])
+
+    const {
+        peak81,
+        peak356
+    } = useSelector(state => state.main);
+
+    const handleSetPeaks = () => {
+        const data = {
+            peak81: peak81,
+            peak356: peak356,
+        }
+        dispatch(setPeaks(data))
+    }
+
+    var iter = -1
+
+    useEffect(() => {
+        setDatas(new Array(100).fill(0).map(data => {
+            iter++
             return ({
-                Activity: (Math.random() * 10).toFixed(0),
+                Activity: iter,
                 Count: (Math.random() * 1000).toFixed(0)
             })
+            
         }))
     }, [])
 
     const renderLineChart = (
-        <div style={{ width: '50%', height:"70vh", maxWidth:"100%" }}>
+        <div style={{ width: '70%', height:"77vh", maxWidth:"100%" }}>
             <ResponsiveContainer >
                 <LineChart data={datas}
                     margin={{ top: 5, right: 30, bottom: 10, left: 15 }}>
@@ -46,59 +57,64 @@ function Spectrum(props) {
                 </LineChart>
             </ResponsiveContainer>
         </div>
-
     );
 
     return (
         <div>
             <h2>Спектрометры</h2>
-            <div style={{ display: 'flex', justifyContent: "space-between",  marginTop: 50 }}>
+            <div style={{ display: 'flex', justifyContent: "space-around",  marginTop: 40 }}>
 
-                <div style={{ alignItems: "flex-end", justifyContent: "flex-start", marginLeft: '5%' }} >
-                    <h4>Спектрометр</h4>
-                    <select className="box">
-                        <option>Спектрометр 1</option>
-                        <option>Спектрометр 2</option>
-                        <option>Спектрометр 3</option>
-                        <hr></hr>
-                        <option>Опорный спектр</option>
-                    </select>
+                <div style={{ alignItems: "flex-end", justifyContent: "flex-start" }} >
+                    <h4>Спектрометры</h4>
+
+                    <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 30}}>
+                        <Button onClick={() => setDatas(new Array(100).fill(0).map(data => {
+                                iter++
+                                return ({
+                                    Activity: iter,
+                                    Count: (Math.random() * 1000).toFixed(0)
+                                })
+                            }))}>Основной</Button>
+                        <Button onClick={() => setDatas(new Array(100).fill(0).map(data => {
+                                iter++
+                                return ({
+                                    Activity: iter,
+                                    Count: (Math.random() * 1000).toFixed(0)
+                                })
+                            }))}>Фоновый</Button>
+                        <Button onClick={() => setDatas(new Array(100).fill(0).map(data => {
+                                iter++
+                                return ({
+                                    Activity: iter,
+                                    Count: (Math.random() * 1000).toFixed(0)
+                                })
+                            }))}>Опорный</Button>
+                    </div>
                     <div>
                         <br></br>
                         <div>
-                            <label for="pic1" style={{display: "block"}} >Пик 1</label>
-                            <input className='input' type="number" id="pic1" value = {peak1}
-                                   style={{display: "block", marginLeft: '50px'}} onChange={(e) => setPeak1(e.target.value)} />
+                            <label for="pic1" style={{display: "block"}} >Пик 81</label>
+                            <input className='input'type={'number'} id="pic1" value = {peak81}
+                                   style={{display: "block", marginLeft: '60px'}} onChange={(e) => dispatch(setPeak81(e.target.value))} />
                         </div>
                         <div>
-                            <label for="pic2" style={{display: "block"}}>Пик 2</label>
-                            <input className='input' type="number" id="pic2" value = {peak2}
-                                style={{display: "block" , marginLeft: '50px'}} onChange={(e) => setPeak2(e.target.value)}/>
+                            <label for="pic2" style={{display: "block"}}>Пик 356</label>
+                            <input className='input' type={'number'} id="pic2" value = {peak356}
+                                style={{display: "block" , marginLeft: '60px'}} onChange={(e) => dispatch(setPeak356(e.target.value))}/>
                         </div>
                         <br></br>
-                        <Button>Установить</Button>
+                        <Button onClick={handleSetPeaks}>Установить</Button>
                     </div>
                     <div>
                         <label class="form-label" for="customFile"></label>
-                        <input type="file" class="form-control" id="customFile" />
+                        <input type="file" class="form-control" id="customFile"/>
                         <br></br>
                         <Button>Добавить опорный спектр</Button>
                     </div>
                 </div>
 
                 {renderLineChart}
-
-                <div style={{ alignItems: "flex-end", justifyContent: "flex-start", marginRight: '5%' }}>
-                    <h4>Тип спектрометра</h4>
-                    <select className="box">
-                        <option>Основной</option>
-                        <option>Фоновый</option>
-                    </select>
-                </div>
             </div>
-            {/* <div style={{ display: 'flex', justifyContent: "center", marginTop: 50 }}>
-                {renderLineChart}
-            </div> */}
         </div>
     )
 }
