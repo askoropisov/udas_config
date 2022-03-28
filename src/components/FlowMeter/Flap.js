@@ -2,14 +2,15 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from 'react';
 
 import Button from 'react-bootstrap/esm/Button';
-import { getFlap, setIsOpenFlapAsync } from '../../API/flowMeter/flap';
+import { setIsOpenFlapAsync } from '../../API/flowMeter/flap';
+import { getAllFlowMeter } from "../../API/flowMeter/generalFlowMeter";
 
 function Flap(props) {
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getFlap())
+        dispatch(getAllFlowMeter())
             
     }, [])
 
@@ -21,7 +22,6 @@ function Flap(props) {
     return (
 
         <div>
-
 
             <h4>Статус:</h4> Заслонка {statusWord}
             <br></br>

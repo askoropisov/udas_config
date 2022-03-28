@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { setIsOpenLoopsAsync } from "../../API/configuration/currentLoops";
 import { getAllConfiguration } from "../../API/configuration/generalConfiguration";
 
 const init = {
@@ -14,12 +15,12 @@ export const currentLoopsSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        // builder.addCase(setIsOpenLoopsAsync.fulfilled, (state, action) => {
-        //     state.isOpenLoops = action.payload
-        // })
-        // builder.addCase(setIsOpenLoopsAsync.rejected, (state, action) => {
-        //     console.log(action)
-        // })
+        builder.addCase(setIsOpenLoopsAsync.fulfilled, (state, action) => {
+            state.isOpenLoops = action.payload
+        })
+        builder.addCase(setIsOpenLoopsAsync.rejected, (state, action) => {
+            console.log(action)
+        })
         builder.addCase(getAllConfiguration.fulfilled, (state, action) => {
             state.isOpenLoops = action.payload
         })

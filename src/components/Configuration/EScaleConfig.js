@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from 'react';
-import { getEscale } from "../../API/configuration/Escale";
+import { getAllConfiguration } from "../../API/configuration/generalConfiguration";
 
 function EScaleConfig(prop) {
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getEscale())
+        dispatch(getAllConfiguration())
             
     }, [])
 

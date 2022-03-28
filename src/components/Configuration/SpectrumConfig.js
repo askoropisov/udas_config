@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from 'react';
-import { getSpectrum } from "../../API/configuration/Spectrum";
+import { getAllConfiguration } from "../../API/configuration/generalConfiguration";
 
 function SpectrumConfig(props){
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getSpectrum())
+        dispatch(getAllConfiguration())
             
     }, [])
 

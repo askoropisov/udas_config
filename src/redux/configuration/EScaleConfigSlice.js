@@ -24,20 +24,6 @@ export const EScaleConfigSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        // builder.addCase(getEscale.fulfilled, (state, action) => {
-        //     const data = action.payload
-        //     console.log(data)
-        //     state.Peak356 = data.peak356
-        //     state.Peak81 = data.peak81
-        //     state.Range = data.range
-        //     state.Duration = data.duration
-        //     state.S0 = data.s0
-        //     state.S1 = data.s1
-        //     state.S2 = data.s2
-        // })
-        // builder.addCase(getEscale.rejected, (state, action) => {
-        //     console.log(action)
-        // })
         builder.addCase(getAllConfiguration.fulfilled, (state, action) => {
             const data = action.payload
             console.log(data)

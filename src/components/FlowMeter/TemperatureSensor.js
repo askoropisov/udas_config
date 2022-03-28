@@ -2,7 +2,7 @@ import logo from './term3.png'
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux"
-import { getTemperature } from '../../API/flowMeter/temperature';
+import { getAllFlowMeter } from '../../API/flowMeter/generalFlowMeter';
 
 function TemperatureSensor(props){
 
@@ -10,7 +10,7 @@ function TemperatureSensor(props){
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getTemperature())
+        dispatch(getAllFlowMeter())
             
     }, [])
     

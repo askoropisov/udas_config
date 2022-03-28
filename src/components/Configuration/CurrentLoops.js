@@ -1,11 +1,20 @@
 import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from 'react';
 import Button from 'react-bootstrap/esm/Button';
+
 import { setIsOpenLoopsAsync } from "../../API/configuration/currentLoops";
+import { getAllConfiguration } from "../../API/configuration/generalConfiguration";
 
 function CurrentLoops(props){
 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllConfiguration())
+            
+    }, [])
+
     const {isOpenLoops} = useSelector(state=>state.configuration.currentloops)
-    const dispatch = useDispatch()
 
     var statusWord;
     if (isOpenLoops === true) statusWord = "включены"

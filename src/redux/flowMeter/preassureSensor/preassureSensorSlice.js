@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getCoefPreassureMeter, setCoefPreassureMeter } from "../../../API/flowMeter/preassureSensor"
+import { getAllFlowMeter } from "../../../API/flowMeter/generalFlowMeter"
+import { setCoefPreassureMeter } from "../../../API/flowMeter/preassureSensor"
 
 const init = {
-    PS_A: -5,
-    PS_B: 2,
-    PS_C: 10,
-    PS_D: 39,
+    PS_A: 10,
+    PS_B: 9,
+    PS_C: 8,
+    PS_D: 7,
     value: 55,
     preassure: 140
 }
@@ -34,17 +35,17 @@ export const preassureSlice = createSlice({
         builder.addCase(setCoefPreassureMeter.rejected, (state, action) => {
             console.log(action)
         })
-        builder.addCase(getCoefPreassureMeter.fulfilled, (state, action) => {
+        builder.addCase(getAllFlowMeter.fulfilled, (state, action)=>{
             const data = action.payload
             console.log(data)
-            state.PS_A = data.polynom.a
-            state.PS_D = data.polynom.b
-            state.PS_C = data.polynom.c 
-            state.PS_D = data.polynom.d
-            state.preassure=data.preassure
-            state.value=data.value
+            state.PS_A = data.pressuareSensorModel.polynom.a
+            state.PS_B = data.pressuareSensorModel.polynom.b
+            state.PS_C = data.pressuareSensorModel.polynom.c 
+            state.PS_D = data.pressuareSensorModel.polynom.d
+            state.preassure=data.pressuareSensorModel.preassure
+            state.value=data.pressuareSensorModel.value
         })
-        builder.addCase(getCoefPreassureMeter.rejected, (state, action) =>{
+        builder.addCase(getAllFlowMeter.rejected, (state, action) =>{
             console.log(action)
         })
     }
