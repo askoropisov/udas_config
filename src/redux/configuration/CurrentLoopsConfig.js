@@ -22,7 +22,9 @@ export const currentLoopsSlice = createSlice({
             console.log(action)
         })
         builder.addCase(getAllConfiguration.fulfilled, (state, action) => {
-            state.isOpenLoops = action.payload
+            const data = action.payload
+            console.log(data)
+            state.isOpenLoops = data.currentLoopsModel.status1
         })
         builder.addCase(getAllConfiguration.rejected, (state, action) => {
             console.log(action)

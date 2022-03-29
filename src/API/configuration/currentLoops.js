@@ -15,7 +15,7 @@ export const setIsOpenLoopsAsync = createAsyncThunk(
 export const getCurrentLoops = createAsyncThunk(
     'configuration/currentloops/getCurrentLoops',
     async () => {
-        return await axios.get("/api/configuration/currentloops")
+        return await axios.get("/api/configuration/currentloops/status")
             .then(res => {
                 const value = res.data;
                 //передава параметр в промис, мы его можем вытащить из action.payload в extraReducer

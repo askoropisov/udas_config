@@ -2,22 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
-export const setPeaks = createAsyncThunk(
-    'main/setPeaks',
-    async (k) => {
-        const response = await axios.post("/api/main/setPeaks", k)
-            .then(res => console.log("res:", res))
-            .catch(err => {
-                console.log("err:", err)
-                return Promise.reject()
-            }
-            )
-        return response
-    },
-)
-
-export const getPeaks = createAsyncThunk(
-    'main/getPeaks',
+export const getAllMain = createAsyncThunk(
+    'main/general/getAll',
     async () => {
         return await axios.get("/api/main")
             .then(res => {

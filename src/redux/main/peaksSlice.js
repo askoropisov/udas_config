@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getPeaks, setPeaks } from "../../API/main/peaks"
+import { getAllMain } from "../../API/main/generalMain"
+import { setPeaks } from "../../API/main/peaks"
 
 const init = {
-    peak81: 100,
-    peak356: 504
+    Peak81: 100,
+    Peak356: 504
 }
 
 export const peaksSlice = createSlice({
@@ -11,11 +12,11 @@ export const peaksSlice = createSlice({
     initialState: init,
     reducers: {
         setPeak81: (state, action) => {
-            state.peak81 = action.payload
+            state.Peak81 = action.payload
         },
         setPeak356: (state, action) => {
-            state.peak356 = action.payload
-        },
+            state.Peak356 = action.payload
+        }
     },
     extraReducers: (builder) => {
         builder.addCase (setPeaks.fulfilled, (state, action)=> {
@@ -24,15 +25,15 @@ export const peaksSlice = createSlice({
         builder.addCase(setPeaks.rejected, (state, action) => {
             console.log(action)
         })
-        builder.addCase(getPeaks.fulfilled, (state, action)=>{
+        builder.addCase(getAllMain.fulfilled, (state, action) =>{
             const data = action.payload
             console.log(data)
-            state.peak356 = data.peak356
-            state.peak81 = data.peak81
+            state.Peak356 = data.eScaleModel.peak356
+            state.Peak81 = data.eScaleModel.peak81
         })
-        builder.addCase(getPeaks.rejected, (state, action) =>{
+        builder.addCase(getAllMain.rejected, (state, action) => {
             console.log(action)
-        })
+    })
     }
 })
 
