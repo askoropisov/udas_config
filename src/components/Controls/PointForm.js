@@ -31,7 +31,7 @@ function PointForm(props) {
     return (
         <div>
             <br></br>
-            <h3>Введите параметр #{props.id}</h3>
+            <h3>Введите значения точки №{props.id}</h3>
             <div >
                 <div>
                     <label for="K">Номер канала АЦП</label> <br></br>

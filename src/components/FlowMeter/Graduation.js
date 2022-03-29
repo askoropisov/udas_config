@@ -32,6 +32,7 @@ function Graduation(props) {
                 <label for="counterPoint">Введите количество точек для градуировки </label> <br></br>
                 <input className='input' type="number" id="counterPoint" value={count} onChange={onChangehandle} />
                 <br></br>
+                <br></br>
                 <Button onClick={() => setIsInputForm(true)}>Ввести значения</Button>
                 <br></br>
                 <Button onClick={() => setCount(0)}>Очистить</Button>   

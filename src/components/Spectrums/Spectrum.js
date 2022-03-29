@@ -1,4 +1,3 @@
-import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/esm/Button';
 import './Spectrum.css'
 
@@ -8,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { setPeaks } from '../../API/main/peaks';
 import { setPeak356, setPeak81 } from '../../redux/main/peaksSlice';
 import { getAllMain } from '../../API/main/generalMain';
+import axios from "axios";
 
 
 function Spectrum(props) {
@@ -31,6 +31,20 @@ function Spectrum(props) {
             peak356: Peak356,
         }
         dispatch(setPeaks(data))
+    }
+
+    const [currFile, setCurrFile] = useState(null)
+    const clickHaldle = async (file) => {
+        const data = new FormData();
+
+        var files = currFile.target.files
+        console.log(files);
+
+        data.append(files[0].name, files[0])
+
+        await axios.post("/api/main/addRefSpectrum", data)
+            .then(res => console.log("uploaded:", res))
+            .catch(err => console.log("Not uploaded:", err))
     }
 
     var iter = -1
@@ -68,7 +82,7 @@ function Spectrum(props) {
             <div style={{ display: 'flex', justifyContent: "space-around",  marginTop: 40 }}>
 
                 <div style={{ alignItems: "flex-end", justifyContent: "flex-start" }} >
-                    <h4>Спектрометры</h4>
+                    <h4>Спектр</h4>
 
                     <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 30}}>
                         <Button onClick={() => setDatas(new Array(100).fill(0).map(data => {
@@ -96,46 +110,24 @@ function Spectrum(props) {
                     
                     <div style={{display: "block"}}>
                         <br></br>
-
-                        <Table striped bordered hover>
-                            <thead>
-                                <tr>
-                                    <th>Пик</th>
-                                    <th>Значение</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td width={100}>81</td>
-                                    <td width={100}><input id="peak81" value={Peak81} type={'number'}
-                                        className='input' onChange={(e) => dispatch(setPeak81(e.target.value))} /></td>
-                                </tr>
-                                <tr>
-                                    <td>356</td>
-                                    <td><input id="peak356" value={Peak356} type={'number'}
-                                        className='input' onChange={(e) => dispatch(setPeak356(e.target.value))} /></td>
-                                </tr>
-                            </tbody>
-                        </Table>
-
-                        {/* <div>
+                        <div>
                             <label for="peak81" style={{display: "block"}} >Пик 81</label>
-                            <input id="peak81" value = {peak81} className='input' type={'number'}
+                            <input id="peak81" value = {Peak81} className='input' type={'number'}
                                    onChange={(e) => dispatch(setPeak81(e.target.value))} />
                         </div>
                         <div>
                             <label for="peak356" style={{display: "block"}}>Пик 356</label>
-                            <input id="peak356" value = {peak356} className='input' type={'number'} 
+                            <input id="peak356" value = {Peak356} className='input' type={'number'} 
                                    onChange={(e) => dispatch(setPeak356(e.target.value))}/>
                         </div>
-                        <br></br> */}
+                        <br></br>
                         <Button onClick={handleSetPeaks}>Установить</Button>
                     </div>
                     <div>
                         <label class="form-label" for="customFile"></label>
-                        <input type="file" class="form-control" id="customFile"/>
+                        <input type="file" class="form-control" id="customFile" onChange={setCurrFile}/>
                         <br></br>
-                        <Button>Добавить опорный спектр</Button>
+                        <Button type="submit" onClick={clickHaldle}>Добавить опорный спектр</Button>
                     </div>
                 </div>
 
