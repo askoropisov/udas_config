@@ -1,5 +1,5 @@
 import { dispatch } from "d3";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/esm/Button";
 import { setCoefGrad } from "../../API/flowMeter/graduation";
 import PointForm from "../Controls/PointForm"
@@ -16,8 +16,6 @@ function Graduation(props) {
     )
 
 
-    // const ref = useRef()
-
     const onChangehandle = (e) => {
         const value = Number(e.target.value)
         if (value >= 0) {
@@ -27,9 +25,7 @@ function Graduation(props) {
             // )))
             // console.log(points)
         }
-
     }
-
 
 
     useEffect(() => {
@@ -48,7 +44,6 @@ function Graduation(props) {
         // dispatch(setCoefGrad(points))
     }
 
-    const r = 0;
 
     return (
         <div>

@@ -22,8 +22,13 @@ function Spectrum(props) {
 
     const {
         Peak81,
-        Peak356
+        Peak356,         
     } = useSelector(state => state.main.peaks);
+
+    const {
+        primary,
+        back,
+    } = useSelector(state => state.main.spectrumType);
 
     const handleSetPeaks = () => {
         const data = {
@@ -82,12 +87,9 @@ function Spectrum(props) {
                     <h4>Спектр</h4>
 
                     <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 30}}>
-                        <Button onClick={() => setDatas(new Array(100).fill(0).map((data, index) => {
-                                    return ({
-                                        Activity: index + 1,
-                                        Энергия: (Math.random() * 1000).toFixed(0)
-                                })
-                            }))}>Основной</Button>
+                        <Button onClick={() => setDatas(primary)}
+                                
+                            >Основной</Button>
                         <Button onClick={() => setDatas(new Array(100).fill(0).map((data, index) => {
                                     return ({
                                         Activity: index + 1,
