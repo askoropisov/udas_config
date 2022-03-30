@@ -19,6 +19,23 @@ function LoadConfig(props) {
             .catch(err => console.log("Not uploaded:", err))
     }
 
+    const LoadHandle = async () => {
+        return await axios.get("/api/configuration/load/downloaded")
+            .then(res => {
+                console.log("downloaded:", res)
+                var name = new Date();
+                var datename =  name.getFullYear()+' '+name.getMonth()+' '+name.getDay()
+
+                const url = window.URL.createObjectURL(new Blob([res.data]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', 'Config '+ datename);
+                document.body.appendChild(link);
+                link.click();
+            })
+            .catch(err => console.log("Not downloaded:", err))
+    }
+
 
     return (
 
@@ -31,7 +48,7 @@ function LoadConfig(props) {
             <Button type="submit" onClick={clickHandle}>Загрузить новую конфигурацию</Button>
             <br></br>
             <br></br>
-            <Button type="submit">Скачать текущую конфигурацию</Button>
+            <Button type="submit" onClick={LoadHandle}>Скачать текущую конфигурацию</Button>
 
         </div>
     )
