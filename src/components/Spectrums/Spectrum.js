@@ -47,13 +47,10 @@ function Spectrum(props) {
             .catch(err => console.log("Not uploaded:", err))
     }
 
-    var iter = -1
-
     useEffect(() => {
-        setDatas(new Array(100).fill(0).map(data => {
-            iter++
+        setDatas(new Array(100).fill(0).map((data, index) => {
             return ({
-                Activity: iter,
+                Activity: index + 1,
                 Энергия: (Math.random() * 1000).toFixed(0)
             })
             
@@ -85,26 +82,23 @@ function Spectrum(props) {
                     <h4>Спектр</h4>
 
                     <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 30}}>
-                        <Button onClick={() => setDatas(new Array(100).fill(0).map(data => {
-                                iter++
-                                return ({
-                                    Activity: iter,
-                                    Энергия: (Math.random() * 1000).toFixed(0)
+                        <Button onClick={() => setDatas(new Array(100).fill(0).map((data, index) => {
+                                    return ({
+                                        Activity: index + 1,
+                                        Энергия: (Math.random() * 1000).toFixed(0)
                                 })
                             }))}>Основной</Button>
-                        <Button onClick={() => setDatas(new Array(100).fill(0).map(data => {
-                                iter++
-                                return ({
-                                    Activity: iter,
-                                    Энергия: (Math.random() * 1000).toFixed(0)
-                                })
+                        <Button onClick={() => setDatas(new Array(100).fill(0).map((data, index) => {
+                                    return ({
+                                        Activity: index + 1,
+                                        Энергия: (Math.random() * 1000).toFixed(0)
+                                                        })
                             }))}>Фоновый</Button>
-                        <Button onClick={() => setDatas(new Array(100).fill(0).map(data => {
-                                iter++
-                                return ({
-                                    Activity: iter,
-                                    Энергия: (Math.random() * 1000).toFixed(0)
-                                })
+                        <Button onClick={() => setDatas(new Array(100).fill(0).map((data, index) => {
+                                    return ({
+                                        Activity: index + 1,
+                                        Энергия: (Math.random() * 1000).toFixed(0)
+                                                        })
                             }))}>Опорный</Button>
                     </div>
                     
