@@ -26,7 +26,6 @@ function EScaleConfig(prop) {
 
     return (
         <div>
-            <h3>Энергетическая калибровка</h3>
             <div >
                 <br></br>
                 <div>

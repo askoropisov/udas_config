@@ -37,7 +37,7 @@ function PointForm(props) {
             <h3>Введите значения точки №{props.id}</h3>
             <div >
                 <div>
-                    <label for="K">Номер канала АЦП</label> <br></br>
+                    <label for="K">Показание АЦП</label> <br></br>
                     <input className='input' type="number" id="K" value={K} onChange={onChangehandleK} />
                 </div>
                 <div>
@@ -51,6 +51,10 @@ function PointForm(props) {
                 <div>
                     <label for="V1b">Конечное значение</label> <br></br>
                     <input className='input' type="number" id="V1b" value={V1b} onChange={(e) => setV1b(e.target.value)} />
+                </div>
+                <div style={{ display: 'flex', justifyContent: "space-evenly", marginTop: 30}}>
+                    <Button>Старт</Button>
+                    <Button>Стоп</Button>
                 </div>
             </div>
             {/* <Button onClick={() => console.log("Saved", props.id)}>Применить</Button> */}

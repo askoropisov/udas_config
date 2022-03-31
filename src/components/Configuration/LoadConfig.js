@@ -44,7 +44,7 @@ function LoadConfig(props) {
             <br></br>
 
             <form action="" method="post" enctype="multipart/form-data">
-            	<label>Скачайте текущую или загрузите новую конфигурацию:</label>
+            	<label>Скачайте текущую конфигурацию или загрузите новую</label>
                 <br></br>
                 <br></br>
             	<input type="file" name="file" class="form-control" accept=".txt,.json" onChange={setCurrFile}/>

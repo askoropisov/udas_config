@@ -8,10 +8,10 @@ function Graduation(props) {
 
 
     const [count, setCount] = useState(0)
-    const [isInputForm, setIsInputForm] = useState(false)
+    const [isInputForm, setIsInputForm] = useState(true)
     const [points, setPoints] = useState([])
 
-    const ppp = Array(count).fill(1).map((item, index) =>
+    const ppp = Array(11).fill(1).map((item, index) =>
         <PointForm id={index + 1} key={"param#" + index} getData={(data) => { setPoints(prev => [...prev, { data }]) }} />
     )
 
@@ -44,12 +44,12 @@ function Graduation(props) {
 
             <div>
                 <br></br>
-                <label for="counterPoint">Введите количество точек для градуировки </label> <br></br>
+                {/* <label for="counterPoint">Введите количество точек для градуировки </label> <br></br>
                 <input className='input' type="number" id="counterPoint" value={count} onChange={onChangehandle} />
                 <br></br>
                 <br></br>
                 <Button onClick={() => setIsInputForm(true)}>Ввести значения</Button>
-                <br></br>
+                <br></br> */}
                 <Button onClick={() => setCount(0)}>Очистить</Button>
             </div>
 
@@ -61,8 +61,10 @@ function Graduation(props) {
                 }
             </div>
             <div>
-
+                <br></br>
                 <Button onClick={handlePostPoints}>Вычислить коэффициенты</Button>
+                <br></br>
+                <br></br>
             </div>
         </div>
     )
