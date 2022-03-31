@@ -14,11 +14,7 @@ function Spectrum(props) {
 
     const dispatch = useDispatch();
     const [datas, setDatas] = useState([])
-
-    useEffect(() => {
-        dispatch(getAllMain())
-            
-    }, [])
+    const [currFile, setCurrFile] = useState(null)
 
     const {
         Peak81,
@@ -28,6 +24,7 @@ function Spectrum(props) {
     const {
         primary,
         back,
+        ref,
     } = useSelector(state => state.main.spectrumType);
 
     const handleSetPeaks = () => {
@@ -38,7 +35,6 @@ function Spectrum(props) {
         dispatch(setPeaks(data))
     }
 
-    const [currFile, setCurrFile] = useState(null)
     const clickHaldle = async (file) => {
         const data = new FormData();
 
@@ -53,14 +49,19 @@ function Spectrum(props) {
     }
 
     useEffect(() => {
-        setDatas(new Array(100).fill(0).map((data, index) => {
+        dispatch(getAllMain())
+            
+    }, [])
+
+    useEffect(() => {
+        setDatas(new Array(primary.length).fill(0).map((data, index) => {
             return ({
                 Activity: index + 1,
-                Энергия: (Math.random() * 1000).toFixed(0)
-            })
-            
+                Энергия: primary[index]
+            })         
         }))
     }, [])
+
 
     const renderLineChart = (
         <div style={{ width: '70%', height:"74vh", maxWidth:"100%" }}>
@@ -70,7 +71,7 @@ function Spectrum(props) {
                     <Line type="monotone" dataKey="Энергия" stroke="#12bf51" animateNewValues={false} />
                     <CartesianGrid stroke="#ccc" />
                     <XAxis dataKey="Activity" fontSize={16} />
-                    <YAxis />
+                    <YAxis/>
                     <Legend />
                     <Tooltip animationDuration={0}/>
                 </LineChart>
@@ -87,22 +88,28 @@ function Spectrum(props) {
                     <h4>Спектр</h4>
 
                     <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 30}}>
-                        <Button onClick={() => setDatas(primary)}
-                                
-                            >Основной</Button>
-                        <Button onClick={() => setDatas(new Array(100).fill(0).map((data, index) => {
+                        <Button onClick={() => setDatas(new Array(primary.length).fill(0).map((data, index) => {
                                     return ({
                                         Activity: index + 1,
-                                        Энергия: (Math.random() * 1000).toFixed(0)
-                                                        })
+                                        Энергия: primary[index]
+                                    })
+                            }))}>Основной</Button>
+
+                        <Button onClick={() => setDatas(new Array(back.length).fill(0).map((data, index) => {
+                                    return ({
+                                        Activity: index + 1,
+                                        Энергия: back[index]
+                                    })
                             }))}>Фоновый</Button>
-                        <Button onClick={() => setDatas(new Array(100).fill(0).map((data, index) => {
+                        <Button onClick={() => setDatas(new Array(ref.length).fill(0).map((data, index) => {
                                     return ({
                                         Activity: index + 1,
-                                        Энергия: (Math.random() * 1000).toFixed(0)
+                                        Энергия: ref[index]
                                                         })
                             }))}>Опорный</Button>
                     </div>
+                    
+
                     
                     <div style={{display: "block"}}>
                         <br></br>

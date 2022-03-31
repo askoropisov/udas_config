@@ -1,13 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { getAllMain } from "../../API/main/generalMain"
-import { getTypeBack, getTypePrimary, getTypeRef } from "../../API/main/spectrumType"
 
 const init = {
-    graph: (new Array(100).fill(1).map(data => {
+    primary: (new Array(100).fill(1).map((data, index) => {
                 return ({
-                    Activity: (Math.random() * 10).toFixed(0),
+                    Activity: index,
                     Count: (Math.random() * 1000).toFixed(0)
                 })
+    })),
+    back: (new Array(100).fill(1).map((data, index) => {
+        return ({
+            Activity: index,
+            Count: (Math.random() * 1000).toFixed(0)
+        })
+    })),
+    ref: (new Array(100).fill(1).map((data, index) => {
+        return ({
+            Activity: index,
+            Count: (Math.random() * 1000).toFixed(0)
+        })
     })),
 }
 
@@ -24,11 +35,13 @@ export const spectrumType = createSlice({
         builder.addCase(getAllMain.fulfilled, (state, action)=>{
             const data = action.payload
             console.log(data)
-            state.graph=data.mass;
+            state.primary=data.primary;
+            state.back=data.back;
+            state.ref=data.reference;
         })
         builder.addCase(getAllMain.rejected, (state, action) =>{
             console.log(action)
-            })
+        })
     }
 })
 
