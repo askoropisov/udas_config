@@ -54,10 +54,10 @@ function Spectrum(props) {
     }, [])
 
     useEffect(() => {
-        setDatas(new Array(primary.length).fill(0).map((data, index) => {
+        setDatas(new Array(100).fill(0).map((data, index) => {
             return ({
                 Activity: index + 1,
-                Энергия: primary[index]
+                Энергия: (Math.random() * 1000).toFixed(0)
             })         
         }))
     }, [])

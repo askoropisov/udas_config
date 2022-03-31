@@ -20,11 +20,11 @@ function LoadConfig(props) {
     }
 
     const LoadHandle = async () => {
-        return await axios.get("/api/configuration/load/downloaded")
+        return await axios.post("/api/configuration/load/downloading")
             .then(res => {
                 console.log("downloaded:", res)
                 var name = new Date();
-                var datename =  name.getFullYear()+' '+name.getMonth()+' '+name.getDay()
+                var datename =  name.getFullYear()+' '+name.getMonth()+' '+name.getDay()+' '+name.getHours()+':'+name.getMinutes();
 
                 const url = window.URL.createObjectURL(new Blob([res.data]));
                 const link = document.createElement('a');
