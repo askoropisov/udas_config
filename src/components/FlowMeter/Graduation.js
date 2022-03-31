@@ -20,16 +20,11 @@ function Graduation(props) {
         const value = Number(e.target.value)
         if (value >= 0) {
             setCount(value)
-            // setPoints((Array(count).fill(1).map((item, index) =>
-            //     <PointForm id={index + 1} key={"param#" + index} />
-            // )))
-            // console.log(points)
         }
     }
 
 
     useEffect(() => {
-        // console.log("ref", ref)
         console.log("points:", points)
         console.log(count)
         console.log(new Array(count).fill(1))
@@ -39,7 +34,6 @@ function Graduation(props) {
 
     const handlePostPoints = () => {
         const forms = document.getElementById("forms").children
-        // const form = forms
         console.log(forms)
         // dispatch(setCoefGrad(points))
     }

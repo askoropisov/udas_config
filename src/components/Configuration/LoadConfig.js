@@ -42,8 +42,14 @@ function LoadConfig(props) {
         <div>
             <br></br>
             <br></br>
-            <label class="form-label" for="customFile"></label>
-            <input type="file" class="form-control" id="customFile" onChange={setCurrFile} />
+
+            <form action="" method="post" enctype="multipart/form-data">
+            	<label>Скачайте текущую или загрузите новую конфигурацию:</label>
+                <br></br>
+                <br></br>
+            	<input type="file" name="file" class="form-control" accept=".txt,.json" onChange={setCurrFile}/>
+            </form>
+
             <br></br>
             <Button type="submit" onClick={clickHandle}>Загрузить новую конфигурацию</Button>
             <br></br>

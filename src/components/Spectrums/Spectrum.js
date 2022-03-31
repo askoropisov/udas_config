@@ -85,7 +85,7 @@ function Spectrum(props) {
             <div style={{ display: 'flex', justifyContent: "space-around",  marginTop: 40 }}>
 
                 <div style={{ alignItems: "flex-end", justifyContent: "flex-start" }} >
-                    <h4>Спектр</h4>
+                    <h4>Выбор спектра</h4>
 
                     <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 30}}>
                         <Button onClick={() => setDatas(new Array(primary.length).fill(0).map((data, index) => {
@@ -127,8 +127,11 @@ function Spectrum(props) {
                         <Button onClick={handleSetPeaks}>Установить</Button>
                     </div>
                     <div>
-                        <label class="form-label" for="customFile"></label>
-                        <input type="file" class="form-control" id="customFile" onChange={setCurrFile}/>
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <br></br>
+                            <br></br>
+                        	<input type="file" name="file" class="form-control" accept=".txt,.json" onChange={setCurrFile}/>
+                        </form>
                         <br></br>
                         <Button type="submit" onClick={clickHaldle}>Добавить опорный спектр</Button>
                     </div>
