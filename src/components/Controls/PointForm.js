@@ -1,17 +1,23 @@
-import { useEffect, useState } from "react";
+
 import Button from "react-bootstrap/esm/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { setCoefK, setCoeft, setCoefV1a, setCoefV1b } from "../../redux/flowMeter/graduation/graduationSlice";
 
 
 function PointForm(props) {
 
-    const [K, setK] = useState(0);
-    const [t, setT] = useState(0);
-    const [V1a, setV1a] = useState(0);
-    const [V1b, setV1b] = useState(0);
+    const dispatch = useDispatch();
+
+    const {
+        K,
+        t,
+        V1a,
+        V1b
+    } = useSelector(state => state.flowMeter.graduation)
 
     const onChangehandleK = (e) => {
         const value = Number(e.target.value)
-        if (value >= 0) setK(value)
+        if (value >= 0) dispatch(setCoefK(value))
 
     }
 
@@ -36,15 +42,15 @@ function PointForm(props) {
                 </div>
                 <div>
                     <label for="t">Время измерения</label> <br></br>
-                    <input className='input' type="time" step="1" id="t" max='00:59' min='00:00' value={t} onChange={(e) => setT(e.target.value)} />
+                    <input className='input' type="time" step="1" id="t" max='00:59' min='00:00' value={t} onChange={(e) => dispatch(setCoeft(e.target.value))} />
                 </div>
                 <div>
                     <label for="V1a">Начальное значение</label> <br></br>
-                    <input className='input' type="number" id="V1a" value={V1a} onChange={(e) => setV1a(e.target.value)} />
+                    <input className='input' type="number" id="V1a" value={V1a} onChange={(e) => dispatch(setCoefV1a(e.target.value))} />
                 </div>
                 <div>
                     <label for="V1b">Конечное значение</label> <br></br>
-                    <input className='input' type="number" id="V1b" value={V1b} onChange={(e) => setV1b(e.target.value)} />
+                    <input className='input' type="number" id="V1b" value={V1b} onChange={(e) => dispatch(setCoefV1b(e.target.value))} />
                 </div>
                 <div style={{ display: 'flex', justifyContent: "space-evenly", marginTop: 30 }}>
                     {/* <Button>Старт</Button>

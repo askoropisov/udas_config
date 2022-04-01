@@ -6,6 +6,7 @@ import SpectrometersSlice from '../redux/configuration/SpectrometersConfig';
 import SpectrumSlice from '../redux/configuration/SpectrumConfig';
 import flapReducer from '../redux/flowMeter/flap/flapSlice';
 import flowMeterSlice from '../redux/flowMeter/flowMeterSensor/flowMeterSlice';
+import graduationSlice from '../redux/flowMeter/graduation/graduationSlice';
 import preassureSlice from '../redux/flowMeter/preassureSensor/preassureSensorSlice';
 import temperatureSlice from '../redux/flowMeter/temperature/temperatureSlice';
 import peaksSlice from '../redux/main/peaksSlice';
@@ -18,6 +19,7 @@ export const store = configureStore({
       flowMeterSensor: flowMeterSlice,
       preassureSensor: preassureSlice,
       temperature: temperatureSlice,
+      graduation: graduationSlice,
     }),
     configuration: combineReducers({
       escale: EScaleSlice,

@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/esm/Button";
 import { useDispatch } from "react-redux";
@@ -30,7 +29,6 @@ function Graduation(props) {
 
     return (
         <div>
-
             <div id="forms">
                 <PointForm
                     id={currentId}

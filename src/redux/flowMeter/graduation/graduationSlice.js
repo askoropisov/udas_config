@@ -2,10 +2,10 @@ import { createSlice } from "@reduxjs/toolkit"
 import { setCoefGrad } from "../../../API/flowMeter/graduation"
 
 const init = {
-    K: 40, 
-    t: 0, 
-    V1a: 3,
-    V1b: 7
+    K: 0, 
+    t: '00:01:00', 
+    V1a: 0,
+    V1b: 0
 }
 
 
