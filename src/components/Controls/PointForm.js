@@ -15,25 +15,19 @@ function PointForm(props) {
 
     }
 
-    useEffect(() => {
-        props.getData(K)
-    }, [K])
-
-
     const getData = () => {
         return (
             {
-                K: K,
-                t: t,
-                V1a: V1a,
-                V1b: V1b
+                acPnumber: K,
+                measureRange: t,
+                startValue: V1a,
+                stopValue: V1b
             }
         )
     }
 
     return (
         <div>
-            <br></br>
             <h3>Введите значения точки №{props.id}</h3>
             <div >
                 <div>
@@ -42,7 +36,7 @@ function PointForm(props) {
                 </div>
                 <div>
                     <label for="t">Время измерения</label> <br></br>
-                    <input className='input' type="time" step="1" id="t" value={t} onChange={(e) => setT(e.target.value)} />
+                    <input className='input' type="time" step="1" id="t" max='00:59' min='00:00' value={t} onChange={(e) => setT(e.target.value)} />
                 </div>
                 <div>
                     <label for="V1a">Начальное значение</label> <br></br>
@@ -52,12 +46,12 @@ function PointForm(props) {
                     <label for="V1b">Конечное значение</label> <br></br>
                     <input className='input' type="number" id="V1b" value={V1b} onChange={(e) => setV1b(e.target.value)} />
                 </div>
-                <div style={{ display: 'flex', justifyContent: "space-evenly", marginTop: 30}}>
-                    <Button>Старт</Button>
-                    <Button>Стоп</Button>
+                <div style={{ display: 'flex', justifyContent: "space-evenly", marginTop: 30 }}>
+                    {/* <Button>Старт</Button>
+                    <Button>Стоп</Button> */}
+                    <Button onClick={(data) => props.setNextForm(getData(data))}>Следующая точка</Button>
                 </div>
             </div>
-            {/* <Button onClick={() => console.log("Saved", props.id)}>Применить</Button> */}
         </div>
     )
 }

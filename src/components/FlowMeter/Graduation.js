@@ -1,70 +1,48 @@
-import { dispatch } from "d3";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/esm/Button";
-import { setCoefGrad } from "../../API/flowMeter/graduation";
+import { useDispatch } from "react-redux";
+import { nullGraduation, setCoefGrad, setGraduation } from "../../API/flowMeter/graduation";
 import PointForm from "../Controls/PointForm"
 
 function Graduation(props) {
 
+    const [currentId, setCurrentId] = useState(1)
 
-    const [count, setCount] = useState(0)
-    const [isInputForm, setIsInputForm] = useState(true)
-    const [points, setPoints] = useState([])
+    const dispatch = useDispatch()
 
-    const ppp = Array(11).fill(1).map((item, index) =>
-        <PointForm id={index + 1} key={"param#" + index} getData={(data) => { setPoints(prev => [...prev, { data }]) }} />
-    )
-
-
-    const onChangehandle = (e) => {
-        const value = Number(e.target.value)
-        if (value >= 0) {
-            setCount(value)
-        }
-    }
-
-
-    useEffect(() => {
-        console.log("points:", points)
-        console.log(count)
-        console.log(new Array(count).fill(1))
-
-
-    }, [count])
-
-    const handlePostPoints = () => {
+    const handlePostPoints = (data) => {
         const forms = document.getElementById("forms").children
         console.log(forms)
-        // dispatch(setCoefGrad(points))
+        dispatch(setGraduation)
     }
 
+    const handleNullGrad = () => {
+        dispatch(nullGraduation)
+        setCurrentId(1);
+    }
+
+    const handleSendForm = async (data) => {
+        console.log(data)
+        dispatch(setCoefGrad(data))
+        setCurrentId(prev => prev + 1)
+    }
 
     return (
         <div>
 
-            <div>
-                <br></br>
-                {/* <label for="counterPoint">Введите количество точек для градуировки </label> <br></br>
-                <input className='input' type="number" id="counterPoint" value={count} onChange={onChangehandle} />
-                <br></br>
-                <br></br>
-                <Button onClick={() => setIsInputForm(true)}>Ввести значения</Button>
-                <br></br> */}
-                <Button onClick={() => setCount(0)}>Очистить</Button>
-            </div>
-
             <div id="forms">
-                {isInputForm ?
-                    ppp
-                    :
-                    null
-                }
+                <PointForm
+                    id={currentId}
+                    key={"param#" + currentId}
+                    setNextForm={(data) => handleSendForm(data)}
+                />
+
+
             </div>
-            <div>
-                <br></br>
-                <Button onClick={handlePostPoints}>Вычислить коэффициенты</Button>
-                <br></br>
-                <br></br>
+            <div style={{ display: 'flex', justifyContent: "space-evenly", marginTop: 30 }}>               
+                <Button onClick={(data)=>handlePostPoints(data)}>Закончить ввод</Button>
+                <Button onClick={handleNullGrad}>Начать заново</Button>
             </div>
         </div>
     )

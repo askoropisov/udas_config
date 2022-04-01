@@ -42,7 +42,7 @@ function FlowMeterSensor(props) {
 
             <img src={logo} width="100" alt="flowmeter"></img>
             <br></br>
-            Скорость потока: {flow} м³/с
+            Скорость потока: {flow} л/мин
             <br></br>
             <br></br>
 
