@@ -36,19 +36,19 @@ function PointForm(props) {
             <h3>Введите значения точки №{props.id}</h3>
             <div >
                 <div>
-                    <label for="K">Показание АЦП</label> <br></br>
+                    <label htmlFor="K">Показание АЦП</label> <br></br>
                     <input className='input' type="number" id="K" value={K} onChange={onChangehandleK} />
                 </div>
                 <div>
-                    <label for="t">Время измерения</label> <br></br>
+                    <label htmlFor="t">Время измерения</label> <br></br>
                     <input className='input' type="time" step="1" id="t" max='00:59' min='00:00' value={t} onChange={(e) => dispatch(setCoeft(e.target.value))} />
                 </div>
                 <div>
-                    <label for="V1a">Начальное значение</label> <br></br>
+                    <label htmlFor="V1a">Начальное значение</label> <br></br>
                     <input className='input' type="number" id="V1a" value={V1a} onChange={(e) => dispatch(setCoefV1a(e.target.value))} />
                 </div>
                 <div>
-                    <label for="V1b">Конечное значение</label> <br></br>
+                    <label htmlFor="V1b">Конечное значение</label> <br></br>
                     <input className='input' type="number" id="V1b" value={V1b} onChange={(e) => dispatch(setCoefV1b(e.target.value))} />
                 </div>
                 <div style={{ display: 'flex', justifyContent: "space-evenly", marginTop: 30 }}>

@@ -13,7 +13,7 @@ function Navigation(props) {
                 defaultActiveKey="spectrum"
                 transition={false}
                 id="noanim-tab-example"
-                menuVariant="dark"
+                
             >
                 <Tab eventKey="spectrum" title="Спектрометры">
                     <Spectrum/>

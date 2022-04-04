@@ -15,7 +15,7 @@ function FlowMeterMenu(props){
         <div>
             <Tab.Container id="left-tabs-example" defaultActiveKey="PreassureSensor">
                 <Row>
-                    <Col sm={3}>
+                    <Col sm={3} md={3} xl={3}>
                         <Nav variant="pills" className="flex-column" style={{cursor:'pointer'}}>
                             <Nav.Item>
                                 <Nav.Link eventKey="PreassureSensor">Датчик давления</Nav.Link>
@@ -34,7 +34,7 @@ function FlowMeterMenu(props){
                             </Nav.Item>
                         </Nav>
                     </Col>
-                    <Col sm={6}>
+                    <Col sm={6} md={6} xl={6}>
                         <Tab.Content >
                             <Tab.Pane eventKey="PreassureSensor">
                                 <PreassureSensor/>

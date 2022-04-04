@@ -34,7 +34,7 @@ function ConfigurationMenu(props){
                         </Nav>
                     </Col>
                     <Col sm={6} md={6} xl={6} >
-                        <Tab.Content style={{margin:0}}>
+                        <Tab.Content>
                             <Tab.Pane eventKey="SpectrometersConfig">
                                 <SpectrometersConfig/>
                             </Tab.Pane>

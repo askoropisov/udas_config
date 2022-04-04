@@ -114,12 +114,12 @@ function Spectrum(props) {
                     <div style={{display: "block"}}>
                         <br></br>
                         <div>
-                            <label for="peak81" style={{display: "block"}} >Пик 81</label>
+                            <label htmlFor="peak81" style={{display: "block"}} >Пик 81</label>
                             <input id="peak81" value = {Peak81} className='input' type={'number'}
                                    onChange={(e) => dispatch(setPeak81(e.target.value))} />
                         </div>
                         <div>
-                            <label for="peak356" style={{display: "block"}}>Пик 356</label>
+                            <label htmlFor="peak356" style={{display: "block"}}>Пик 356</label>
                             <input id="peak356" value = {Peak356} className='input' type={'number'} 
                                    onChange={(e) => dispatch(setPeak356(e.target.value))}/>
                         </div>
@@ -127,10 +127,10 @@ function Spectrum(props) {
                         <Button onClick={handleSetPeaks}>Установить</Button>
                     </div>
                     <div>
-                        <form action="" method="post" enctype="multipart/form-data">
+                        <form action="" method="post" encType="multipart/form-data">
                             <br></br>
                             <br></br>
-                        	<input type="file" name="file" class="form-control" accept=".txt,.json" onChange={setCurrFile}/>
+                        	<input type="file" name="file" className="form-control" accept=".txt,.json" onChange={setCurrFile}/>
                         </form>
                         <br></br>
                         <Button type="submit" onClick={clickHaldle}>Добавить опорный спектр</Button>
