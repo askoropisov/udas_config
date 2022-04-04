@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAllFlowMeter } from "../../../API/flowMeter/generalFlowMeter";
+import { getTemperature } from "../../../API/flowMeter/temperature";
 
 const init = {
     temperature: 27.5
@@ -22,6 +23,15 @@ export const temperatureSlice = createSlice({
         builder.addCase(getAllFlowMeter.rejected, (state, action) =>{
             console.log(action)
         })
+        builder.addCase(getTemperature.fulfilled, (state, action)=>{
+            const data = action.payload
+            console.log(data)
+            state.temperature = data
+        })
+        builder.addCase(getTemperature.rejected, (state, action) =>{
+            console.log(action)
+        })
+        
     }
 })
 
