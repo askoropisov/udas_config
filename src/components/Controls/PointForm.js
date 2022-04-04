@@ -18,7 +18,6 @@ function PointForm(props) {
     const onChangehandleK = (e) => {
         const value = Number(e.target.value)
         if (value >= 0) dispatch(setCoefK(value))
-
     }
 
     const getData = () => {

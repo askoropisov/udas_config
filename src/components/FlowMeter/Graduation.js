@@ -1,23 +1,26 @@
-import { useEffect, useState } from "react";
+import axios from "axios";
+import { useState } from "react";
 import Button from "react-bootstrap/esm/Button";
 import { useDispatch } from "react-redux";
-import { nullGraduation, setCoefGrad, setGraduation } from "../../API/flowMeter/graduation";
+import { setCoefGrad } from "../../API/flowMeter/graduation";
 import PointForm from "../Controls/PointForm"
 
 function Graduation(props) {
+    
+    const dispatch = useDispatch()
 
     const [currentId, setCurrentId] = useState(1)
 
-    const dispatch = useDispatch()
-
-    const handlePostPoints = (data) => {
-        const forms = document.getElementById("forms").children
-        console.log(forms)
-        dispatch(setGraduation)
+    const handlePostPoints = async () => {
+        await axios.post("/api/flowmeter/grad/graduation")
+            .then(res => console.log("start graduation", res))
+            .catch(err => console.log("Error", err))
     }
 
-    const handleNullGrad = () => {
-        dispatch(nullGraduation)
+    const handleNullGrad = async () => {
+        await axios.post("/api/flowmeter/grad/clear")
+            .then(res => console.log("points delete", res))
+            .catch(err => console.log("Error", err))
         setCurrentId(1);
     }
 
@@ -35,9 +38,8 @@ function Graduation(props) {
                     key={"param#" + currentId}
                     setNextForm={(data) => handleSendForm(data)}
                 />
-
-
             </div>
+            
             <div style={{ display: 'flex', justifyContent: "space-evenly", marginTop: 30 }}>               
                 <Button onClick={(data)=>handlePostPoints(data)}>Закончить ввод</Button>
                 <Button onClick={handleNullGrad}>Начать заново</Button>
