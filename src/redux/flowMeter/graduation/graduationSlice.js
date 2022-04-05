@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit"
 import { getPolynom, setCoefGrad } from "../../../API/flowMeter/graduation"
 
 const init = {
-    K: 0, 
-    t: '00:01:00', 
+    K: 0,
+    t: '00:01:00',
     V1a: 0,
     V1b: 0,
-    polynom: 0
+    polynom: []
 }
 
 
@@ -37,9 +37,14 @@ export const graduationSlice = createSlice({
         builder.addCase(getPolynom.fulfilled, (state, action) => {
             const data = action.payload
             console.log(data)
-            state.polynom=data
+            state.polynom = new Array(data.length).fill(0).map((_, index) => {
+                return ({
+                    Activity: index + 1,
+                    Энергия: data[index]
+                })
+            })
         })
-        builder.addCase(getPolynom.rejected, (state, action) =>{
+        builder.addCase(getPolynom.rejected, (state, action) => {
             console.log(action)
         })
     }
