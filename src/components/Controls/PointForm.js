@@ -1,6 +1,7 @@
 
 import Button from "react-bootstrap/esm/Button";
 import { useDispatch, useSelector } from "react-redux";
+import { getACP } from "../../API/flowMeter/graduation";
 import { setCoefK, setCoeft, setCoefV1a, setCoefV1b } from "../../redux/flowMeter/graduation/graduationSlice";
 import Timer from "./Stopwatch";
 
@@ -16,11 +17,6 @@ function PointForm(props) {
         V1b
     } = useSelector(state => state.flowMeter.graduation)
 
-    const onChangehandleK = (e) => {
-        const value = Number(e.target.value)
-        if (value >= 0) dispatch(setCoefK(value))
-    }
-
     const getData = () => {
         return (
             {
@@ -32,13 +28,19 @@ function PointForm(props) {
         )
     }
 
+    const handleACP = async () => {
+        setCoefK(dispatch(getACP()))
+    }
+
     return (
         <div>
             <h3>Введите значения точки №{props.id}</h3>
             <div >
                 <div>
                     <label htmlFor="K">Показание АЦП</label> <br></br>
-                    <input className='input' type="number" id="K" value={K} onChange={onChangehandleK} />
+                    <input className='input' type="number" id="K" value={K} onChange={(e) => dispatch(setCoefK(e.target.value))} />
+                    <br></br>
+                    <Button onClick={handleACP}>Получить</Button>
                 </div>
                 <div>
                     <label htmlFor="t">Время измерения</label> <br></br>

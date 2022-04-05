@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getPolynom, setCoefGrad } from "../../../API/flowMeter/graduation"
+import { getACP, getPolynom, setCoefGrad } from "../../../API/flowMeter/graduation"
 
 const init = {
     K: 0,
@@ -53,6 +53,14 @@ export const graduationSlice = createSlice({
             state.Kd = data.d;
         })
         builder.addCase(getPolynom.rejected, (state, action) => {
+            console.log(action)
+        })
+        builder.addCase(getACP.fulfilled, (state, action) => {
+            const data = action.payload
+            console.log(data)
+            state.K = data
+        })
+        builder.addCase(getACP.rejected, (state, action) => {
             console.log(action)
         })
     }
