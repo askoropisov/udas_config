@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect, useReducer } from "react";
+import axios from "axios";
+import React, { useState, useRef, useEffect} from "react";
 import { Button } from "react-bootstrap";
 
 function Timer(props) {
@@ -6,6 +7,20 @@ function Timer(props) {
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [timerOn, setTimerOn] = useState(false);
+
+  const handleStartPump = async() => {
+    await axios.post("/api/flowmeter/grad/startPump")
+            .then(res => console.log("startPump", res))
+            .catch(err => console.log("Error", err))
+    setTimerOn(true)
+  }
+
+  const handleStopPump = async() => {
+    await axios.post("/api/flowmeter/grad/stopPump")
+            .then(res => console.log("stopPump", res))
+            .catch(err => console.log("Error", err))
+    setTimerOn(false)
+  }
 
   useInterval(() => {
     if (!timerOn) return;
@@ -35,22 +50,18 @@ function Timer(props) {
       </div>
       <div>
         {timerOn === false && (
-          <Button onClick={() => setTimerOn(true)}>Насос Вкл</Button>
+          <Button onClick={handleStartPump}>Насос Вкл</Button>
         )}
         {timerOn === true && (
-          <Button onClick={() => setTimerOn(false)}>Насос Выкл</Button>
+          <Button onClick={handleStopPump}>Насос Выкл</Button>
         )}
-        {/* {
-          <Button
+        {/* {<Button
             onClick={() => {
               setTimerOn(false);
               setCentiseconds(0);
               setSeconds(0);
               setMinutes(0);
-            }}
-          >
-            Сброс
-          </Button>
+            }}>Сброс</Button>
         } */}
       </div>
     </>
@@ -80,10 +91,3 @@ function useInterval(callback, delay) {
 }
 
 export default Timer
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <Timer />
-//   </React.StrictMode>,
-//   document.getElementById("root")
-// );
