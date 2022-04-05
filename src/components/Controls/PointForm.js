@@ -2,6 +2,7 @@
 import Button from "react-bootstrap/esm/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { setCoefK, setCoeft, setCoefV1a, setCoefV1b } from "../../redux/flowMeter/graduation/graduationSlice";
+import Timer from "./Stopwatch";
 
 
 function PointForm(props) {
@@ -41,7 +42,10 @@ function PointForm(props) {
                 </div>
                 <div>
                     <label htmlFor="t">Время измерения</label> <br></br>
-                    <input className='input' type="time" step="1" id="t" max='00:59' min='00:00' value={t} onChange={(e) => dispatch(setCoeft(e.target.value))} />
+                    {/* <input className='input' type="time" step="1" id="t" max='00:59' min='00:00' value={t} onChange={(e) => dispatch(setCoeft(e.target.value))} /> */}
+                </div>
+                <div>                 
+                    <Timer></Timer>
                 </div>
                 <div>
                     <label htmlFor="V1a">Начальное значение</label> <br></br>

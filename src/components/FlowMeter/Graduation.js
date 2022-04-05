@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPolynom, setCoefGrad } from "../../API/flowMeter/graduation";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import PointForm from "../Controls/PointForm"
+import Stopwatch from "../Controls/Stopwatch";
+import Timer from "../Controls/Stopwatch";
 
 function Graduation(props) {
 
