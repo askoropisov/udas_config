@@ -6,6 +6,10 @@ const init = {
     t: '00:01:00',
     V1a: 0,
     V1b: 0,
+    Ka: 0,
+    Kb: 0,
+    Kc: 0,
+    Kd: 0,
     polynom: []
 }
 
@@ -37,12 +41,16 @@ export const graduationSlice = createSlice({
         builder.addCase(getPolynom.fulfilled, (state, action) => {
             const data = action.payload
             console.log(data)
-            state.polynom = new Array(data.length).fill(0).map((_, index) => {
+            state.polynom = new Array(data.polynom.length).fill(0).map((_, index) => {
                 return ({
                     Activity: index + 1,
-                    Энергия: data[index]
+                    Энергия: data.polynom[index]
                 })
             })
+            state.Ka = data.a;
+            state.Kb = data.b;
+            state.Kc = data.c;
+            state.Kd = data.d;
         })
         builder.addCase(getPolynom.rejected, (state, action) => {
             console.log(action)

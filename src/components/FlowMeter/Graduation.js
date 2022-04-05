@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "react-bootstrap/esm/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { getPolynom, setCoefGrad } from "../../API/flowMeter/graduation";
@@ -12,7 +12,11 @@ function Graduation(props) {
 
     const [currentId, setCurrentId] = useState(1)
     const [plot, setPlot] = useState(false)
-    const { polynom } = useSelector(state => state.flowMeter.graduation)
+    const { polynom,
+            Ka,
+            Kb,
+            Kc,
+            Kd } = useSelector(state => state.flowMeter.graduation)
 
     const handlePostPoints = async () => {
         dispatch(getPolynom())
@@ -34,25 +38,39 @@ function Graduation(props) {
     }
 
     const renderLineChart = (
-        <div style={{ width: '100%', height: "50vh", maxWidth: "100%" }}>
-            <ResponsiveContainer >
-                <LineChart data={polynom}
-                    margin={{ top: 5, right: 30, bottom: 10, left: 15 }}>
-                    <Line type="monotone" dataKey="Энергия" stroke="#12bf51" animateNewValues={false} />
-                    <CartesianGrid stroke="#ccc" />
-                    <XAxis dataKey="Activity" fontSize={16} />
-                    <YAxis />
-                    <Legend />
-                    <Tooltip animationDuration={0} />
-                </LineChart>
-            </ResponsiveContainer>
+        <div>
+            <div>
+                <h3>Полученные коэффициенты</h3>
+                <br></br>
+                <div style={{ display: 'flex', justifyContent: "space-evenly" }}>
+                    <div> A:  {Ka}  </div>
+                    <div> B:  {Kb}  </div> 
+                </div>
+                <div style={{ display: 'flex', justifyContent: "space-evenly" }}>
+                    <div> C:  {Kc}  </div>
+                    <div> D:  {Kd}  </div> 
+                </div>
+                <br></br>
+            </div>
+            <div style={{ width: '100%', height: "52vh", maxWidth: "100%" }}>
+                <ResponsiveContainer >
+                    <LineChart data={polynom}
+                        margin={{ top: 5, right: 30, bottom: 10, left: 15 }}>
+                        <Line type="monotone" dataKey="Энергия" stroke="#12bf51" animateNewValues={false} />
+                        <CartesianGrid stroke="#ccc" />
+                        <XAxis dataKey="Activity" fontSize={16} />
+                        <YAxis />
+                        <Legend />
+                        <Tooltip animationDuration={0} />
+                    </LineChart>
+                </ResponsiveContainer>
+            </div>
         </div>
     );
 
     return (
         <div>
             <div >
-                <br></br>
                 {plot === true ? renderLineChart : null}
             </div>
             <div id="forms">
@@ -62,7 +80,6 @@ function Graduation(props) {
                     setNextForm={(data) => handleSendForm(data)}
                 />
             </div>
-
             <div style={{ display: 'flex', justifyContent: "space-evenly", marginTop: 30 }}>
                 <Button onClick={(data) => handlePostPoints(data)}>Закончить ввод</Button>
                 <Button onClick={handleNullGrad}>Начать заново</Button>
