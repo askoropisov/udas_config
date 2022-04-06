@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { getAllMain } from "../../API/main/generalMain"
+import { getTypePrimary } from "../../API/main/spectrumType"
 
 const init = {
     primary: (new Array(100).fill(1).map((data, index) => {
@@ -41,6 +42,10 @@ export const spectrumType = createSlice({
         })
         builder.addCase(getAllMain.rejected, (state, action) =>{
             console.log(action)
+        })
+        builder.addCase(getTypePrimary.fulfilled, (state, action) => {
+            const data = action.payload
+            state.primary = data
         })
     }
 })

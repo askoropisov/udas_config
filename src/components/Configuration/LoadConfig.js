@@ -24,7 +24,7 @@ function LoadConfig(props) {
             .then(res => {
                 console.log("downloaded:", res)
                 var name = new Date();
-                var datename =  name.getFullYear()+' '+name.getMonth()+' '+name.getDay()+' '+name.getHours()+':'+name.getMinutes();
+                var datename =  name.getFullYear()+'_'+(name.getMonth()+1)+'_'+name.getDate()+'_'+name.getHours()+':'+name.getMinutes();
 
                 const url = window.URL.createObjectURL(new Blob([res.data]));
                 const link = document.createElement('a');

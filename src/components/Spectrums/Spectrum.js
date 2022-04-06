@@ -88,14 +88,14 @@ function Spectrum(props) {
                     <h4>Выбор спектра</h4>
 
                     <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 30}}>
-                        <Button onClick={() => setDatas(new Array(primary.length).fill(0).map((data, index) => {
+                        <Button onClick={() => setDatas(new Array(primary.length/2).fill(0).map((data, index) => {
                                     return ({
                                         Activity: index + 1,
                                         Энергия: primary[index]
                                     })
                             }))}>Основной</Button>
 
-                        <Button onClick={() => setDatas(new Array(back.length).fill(0).map((data, index) => {
+                        <Button onClick={() => setDatas(new Array(back.length/2).fill(0).map((data, index) => {
                                     return ({
                                         Activity: index + 1,
                                         Энергия: back[index]
@@ -105,7 +105,7 @@ function Spectrum(props) {
                                     return ({
                                         Activity: index + 1,
                                         Энергия: ref[index]
-                                                        })
+                                    })
                             }))}>Опорный</Button>
                     </div>
                     

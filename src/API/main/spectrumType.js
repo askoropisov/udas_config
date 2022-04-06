@@ -5,7 +5,7 @@ import axios from "axios";
 export const getTypePrimary = createAsyncThunk(
     'main/type/primary',
     async () => {
-        return await axios.get("/api/main/type/primary")
+        return await axios.get("/api/main/primary")
             .then(res => {
                 const value = res.data;
                 //передава параметр в промис, мы его можем вытащить из action.payload в extraReducer

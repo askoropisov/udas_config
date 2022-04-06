@@ -46,11 +46,8 @@ function PointForm(props) {
                     <br></br>
                     <Button onClick={handleACP}>Получить</Button>
                 </div>
-                <div>
-                    <label htmlFor="t">Время измерения</label> <br></br>
-                    {/* <input className='input' type="time" step="1" id="t" max='00:59' min='00:00' value={t} onChange={(e) => dispatch(setCoeft(e.target.value))} /> */}
-                </div>
-                <div>                 
+                <div>   
+                    <label>Время измерения</label> <br></br>              
                     <Timer
                         getTime = {(data)=> handleTime(data)}></Timer>
                 </div>

@@ -13,10 +13,10 @@ function Graduation(props) {
     const [currentId, setCurrentId] = useState(1)
     const [plot, setPlot] = useState(false)
     const { polynom,
-            Ka,
-            Kb,
-            Kc,
-            Kd } = useSelector(state => state.flowMeter.graduation)
+        Ka,
+        Kb,
+        Kc,
+        Kd } = useSelector(state => state.flowMeter.graduation)
 
     const handlePostPoints = async () => {
         dispatch(getPolynom())
@@ -29,6 +29,7 @@ function Graduation(props) {
             .catch(err => console.log("Error", err))
         setCurrentId(1);
         setPlot(false)
+        setCoefGrad(0)
     }
 
     const handleSendForm = async (data) => {
@@ -44,11 +45,11 @@ function Graduation(props) {
                 <br></br>
                 <div style={{ display: 'flex', justifyContent: "space-evenly" }}>
                     <div> A:  {Ka}  </div>
-                    <div> B:  {Kb}  </div> 
+                    <div> B:  {Kb}  </div>
                 </div>
                 <div style={{ display: 'flex', justifyContent: "space-evenly" }}>
                     <div> C:  {Kc}  </div>
-                    <div> D:  {Kd}  </div> 
+                    <div> D:  {Kd}  </div>
                 </div>
                 <br></br>
             </div>
@@ -68,22 +69,24 @@ function Graduation(props) {
         </div>
     );
 
-    return (
+    const writeForm = (
         <div>
-            <div >
-                {plot === true ? renderLineChart : null}
-            </div>
             <div id="forms">
                 <PointForm
                     id={currentId}
                     key={"param#" + currentId}
-                    setNextForm={(data) => handleSendForm(data)}
-                />
+                    setNextForm={(data) => handleSendForm(data)}/>
             </div>
             <div style={{ display: 'flex', justifyContent: "space-evenly", marginTop: 30 }}>
                 <Button onClick={(data) => handlePostPoints(data)}>Закончить ввод</Button>
                 <Button onClick={handleNullGrad}>Начать заново</Button>
             </div>
+        </div>
+    );
+
+    return (
+        <div >
+            {plot === true ? renderLineChart : writeForm}
         </div>
     )
 }
