@@ -20,12 +20,16 @@ function PointForm(props) {
     const getData = () => {
         return (
             {
-                acPnumber: K,
+                acPnumber: K, 
                 measureRange: t,
                 startValue: V1a,
                 stopValue: V1b
             }
         )
+    }
+
+    const handleTime = (data) => {
+        dispatch(setCoeft(data))
     }
 
     const handleACP = async () => {
@@ -47,7 +51,8 @@ function PointForm(props) {
                     {/* <input className='input' type="time" step="1" id="t" max='00:59' min='00:00' value={t} onChange={(e) => dispatch(setCoeft(e.target.value))} /> */}
                 </div>
                 <div>                 
-                    <Timer></Timer>
+                    <Timer
+                        getTime = {(data)=> handleTime(data)}></Timer>
                 </div>
                 <div>
                     <label htmlFor="V1a">Начальное значение</label> <br></br>

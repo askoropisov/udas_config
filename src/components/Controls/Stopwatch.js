@@ -20,6 +20,7 @@ function Timer(props) {
             .then(res => console.log("stopPump", res))
             .catch(err => console.log("Error", err))
     setTimerOn(false)
+    props.getTime(minutes+":"+seconds+":"+centiseconds)
   }
 
   useInterval(() => {
