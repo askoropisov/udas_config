@@ -18,7 +18,6 @@ export const setCoefPreassureMeter = createAsyncThunk(
 
 export const getCoefPreassureMeter = createAsyncThunk(
     'flowmeter/preassureSensor/getCoefPreassure',
-    setInterval(
         async () => {
             return await axios.get("/api/flowmeter/preassure")
                 .then(res => {
@@ -31,5 +30,4 @@ export const getCoefPreassureMeter = createAsyncThunk(
                     return Promise.reject()
                 })
         },
-    1000)
 )

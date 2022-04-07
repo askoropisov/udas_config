@@ -18,11 +18,11 @@ export const setCoefFlowMeter = createAsyncThunk(
 
 export const getCoefFlowMeter = createAsyncThunk(
     'flowmeter/flowMeterSensor/getCoef',
-    setInterval(
         async () => {
             return await axios.get("/api/flowmeter/flow")
                 .then(res => {
                     const value = res.data;
+                    console.log("flow", value)
                     //передава параметр в промис, мы его можем вытащить из action.payload в extraReducer
                     return Promise.resolve(value)
                 })
@@ -31,5 +31,4 @@ export const getCoefFlowMeter = createAsyncThunk(
                     return Promise.reject()
                 })
         },
-    1000)
 )

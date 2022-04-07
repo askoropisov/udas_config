@@ -3,17 +3,19 @@ import Button from 'react-bootstrap/esm/Button';
 import { useDispatch, useSelector } from "react-redux"
 import logo from './preassure.png'
 import { setPreassureA, setPreassureB, setPreassureC, setPreassureD } from '../../redux/flowMeter/preassureSensor/preassureSensorSlice';
-import { setCoefPreassureMeter } from '../../API/flowMeter/preassureSensor';
+import { getCoefPreassureMeter, setCoefPreassureMeter } from '../../API/flowMeter/preassureSensor';
 import { useEffect } from 'react';
-import { getAllFlowMeter } from '../../API/flowMeter/generalFlowMeter';
 
 function PreassureSensor(props) {
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getAllFlowMeter())
-            
+        const interval = setInterval(
+            () =>
+                dispatch(getCoefPreassureMeter()), 1000
+        )
+        return () => clearInterval(interval)
     }, [])
 
     const {

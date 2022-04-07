@@ -1,15 +1,6 @@
-import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from 'react';
-import { getAllConfiguration } from "../../API/configuration/generalConfiguration";
+import { useSelector } from "react-redux"
 
 function SpectrometersConfig(props) {
-
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getAllConfiguration())
-            
-    }, [])
 
     const {
         primaryPort,
@@ -46,7 +37,6 @@ function SpectrometersConfig(props) {
                     Бета: {backB} <br></br>
                     Радон: {backRn} <br></br>
                 </div>
-
             </div>
         </div>
     )

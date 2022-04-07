@@ -4,7 +4,6 @@ import axios from "axios";
 
 export const getTemperature = createAsyncThunk(
     'flowmeter/temperature/getTemperature',
-    setInterval(
         async () => {
             return await axios.get("/api/flowmeter/temperature")
                 .then(res => {
@@ -17,5 +16,4 @@ export const getTemperature = createAsyncThunk(
                     return Promise.reject()
                 })
         },
-    1000)
 )

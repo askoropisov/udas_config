@@ -1,20 +1,13 @@
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from 'react';
 import close from './flap_close.png'
 import open from './flap_open.png'
 
 import Button from 'react-bootstrap/esm/Button';
 import { setIsOpenFlapAsync } from '../../API/flowMeter/flap';
-import { getAllFlowMeter } from "../../API/flowMeter/generalFlowMeter";
 
 function Flap(props) {
 
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getAllFlowMeter())
-            
-    }, [])
 
     var image = close
 

@@ -42,7 +42,8 @@ function PointForm(props) {
             <div >
                 <div>
                     <label htmlFor="K">Показание АЦП</label> <br></br>
-                    <input className='input' type="number" id="K" value={K} onChange={(e) => dispatch(setCoefK(e.target.value))} />
+                    <input className='input' type="number" id="K" value={K} onChange={(e) => dispatch(setCoefK(e.target.value))} 
+                           style={{width: "38%"}}/>
                     <br></br>
                     <Button onClick={handleACP}>Получить</Button>
                 </div>

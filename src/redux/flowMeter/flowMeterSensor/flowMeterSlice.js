@@ -51,7 +51,7 @@ export const flowMeterSlice = createSlice({
         })
         builder.addCase(getCoefFlowMeter.fulfilled, (state, action)=>{
             const data = action.payload
-            console.log(data)
+            console.log("upDate", data)
             state.flow = data.flow
             state.value = data.value
         })

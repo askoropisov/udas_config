@@ -1,18 +1,7 @@
-import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from 'react';
-import { getAllConfiguration } from "../../API/configuration/generalConfiguration";
+import { useSelector } from "react-redux"
 
 function EScaleConfig(prop) {
 
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getAllConfiguration())
-            
-    }, [])
-
-
-    
     const {
         Peak356,
         Peak81,
@@ -21,8 +10,6 @@ function EScaleConfig(prop) {
         S0,
         S1,
         S2 } = useSelector(state=>state.configuration.escale)
-
-
 
     return (
         <div>

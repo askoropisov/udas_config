@@ -4,9 +4,8 @@ import { useDispatch, useSelector } from "react-redux"
 import logo from './flowmeter.png'
 import { useEffect } from 'react';
 
-import { setCoefFlowMeter } from '../../API/flowMeter/flowMeterSensor'
+import { getCoefFlowMeter, setCoefFlowMeter } from '../../API/flowMeter/flowMeterSensor'
 import { setFlowA, setFlowB, setFlowC, setFlowD } from '../../redux/flowMeter/flowMeterSensor/flowMeterSlice';
-import { getAllFlowMeter } from '../../API/flowMeter/generalFlowMeter';
 
 
 function FlowMeterSensor(props) {
@@ -14,8 +13,11 @@ function FlowMeterSensor(props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getAllFlowMeter())
-            
+        const interval = setInterval(
+            () =>
+                dispatch(getCoefFlowMeter()), 1000
+        )
+        return () => clearInterval(interval)
     }, [])
 
     const {

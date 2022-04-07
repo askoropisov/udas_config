@@ -49,11 +49,6 @@ function Spectrum(props) {
     }
 
     useEffect(() => {
-        dispatch(getAllMain())
-            
-    }, [])
-
-    useEffect(() => {
         setDatas(new Array(100).fill(0).map((data, index) => {
             return ({
                 Activity: index + 1,

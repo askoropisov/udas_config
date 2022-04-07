@@ -1,15 +1,6 @@
-import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from 'react';
-import { getAllConfiguration } from "../../API/configuration/generalConfiguration";
+import { useSelector } from "react-redux"
 
 function SpectrumConfig(props){
-
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getAllConfiguration())
-            
-    }, [])
 
     const {
         alphaR,
