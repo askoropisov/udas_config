@@ -38,7 +38,6 @@ export const flowMeterSlice = createSlice({
         })
         builder.addCase(getAllFlowMeter.fulfilled, (state, action)=>{
             const data = action.payload
-            console.log(data)
             state.FM_A = data.flowMeterSensorModel.polynom.a
             state.FM_B = data.flowMeterSensorModel.polynom.b
             state.FM_C = data.flowMeterSensorModel.polynom.c 
@@ -51,7 +50,6 @@ export const flowMeterSlice = createSlice({
         })
         builder.addCase(getCoefFlowMeter.fulfilled, (state, action)=>{
             const data = action.payload
-            console.log("upDate", data)
             state.flow = data.flow
             state.value = data.value
         })

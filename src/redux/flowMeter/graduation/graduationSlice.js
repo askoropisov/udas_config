@@ -40,7 +40,6 @@ export const graduationSlice = createSlice({
         })
         builder.addCase(getPolynom.fulfilled, (state, action) => {
             const data = action.payload
-            console.log(data)
             state.polynom = new Array(data.polynom.length).fill(0).map((_, index) => {
                 return ({
                     Activity: index + 1,
@@ -57,7 +56,6 @@ export const graduationSlice = createSlice({
         })
         builder.addCase(getACP.fulfilled, (state, action) => {
             const data = action.payload
-            console.log(data)
             state.K = data
         })
         builder.addCase(getACP.rejected, (state, action) => {

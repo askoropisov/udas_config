@@ -23,7 +23,6 @@ export const flapSlice = createSlice({
         })
         builder.addCase(getAllFlowMeter.fulfilled, (state, action) =>{
             const data = action.payload
-            console.log(data)
             state.isOpen=data.flapModel.status;
         })
         builder.addCase(getAllFlowMeter.rejected, (state, action) =>{

@@ -21,7 +21,6 @@ export const SpectrumSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getAllConfiguration.fulfilled, (state, action) => {
             const data = action.payload
-            console.log(data)
             state.alphaL = data.spectrumConfigModel.alpha.left
             state.alphaR = data.spectrumConfigModel.alpha.right
             state.betaL = data.spectrumConfigModel.beta.left

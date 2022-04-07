@@ -26,7 +26,6 @@ export const EScaleConfigSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getAllConfiguration.fulfilled, (state, action) => {
             const data = action.payload
-            console.log(data)
             state.Peak356 = data.eScaleModel.peak356
             state.Peak81 = data.eScaleModel.peak81
             state.Range = data.eScaleModel.range

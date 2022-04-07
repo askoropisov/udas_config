@@ -23,7 +23,6 @@ export const SpectrometersSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getAllConfiguration.fulfilled, (state, action) => {
             const data = action.payload
-            console.log(data)
             state.primaryPort=data.spectrometersConfigModel.primary.port
             state.backPort=data.spectrometersConfigModel.background.port
             state.primaryA=data.spectrometersConfigModel.primary.deadTime.alpha

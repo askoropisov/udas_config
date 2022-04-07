@@ -27,7 +27,6 @@ export const peaksSlice = createSlice({
         })
         builder.addCase(getAllMain.fulfilled, (state, action) =>{
             const data = action.payload
-            console.log(data)
             state.Peak356 = data.eScaleModel.peak356
             state.Peak81 = data.eScaleModel.peak81
         })

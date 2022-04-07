@@ -17,7 +17,6 @@ export const temperatureSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getAllFlowMeter.fulfilled, (state, action)=>{
             const data = action.payload
-            console.log(data);
             state.temperature = data.temperatureSensorModel.temperature;
         })
         builder.addCase(getAllFlowMeter.rejected, (state, action) =>{
@@ -25,7 +24,6 @@ export const temperatureSlice = createSlice({
         })
         builder.addCase(getTemperature.fulfilled, (state, action)=>{
             const data = action.payload
-            console.log(data)
             state.temperature = data
         })
         builder.addCase(getTemperature.rejected, (state, action) =>{

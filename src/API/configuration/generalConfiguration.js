@@ -8,7 +8,6 @@ export const getAllConfiguration = createAsyncThunk(
         return await axios.get("/api/configuration")
             .then(res => {
                 const value = res.data;
-                //передава параметр в промис, мы его можем вытащить из action.payload в extraReducer
                 return Promise.resolve(value)
             })
             .catch(err => {

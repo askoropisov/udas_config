@@ -37,7 +37,6 @@ export const preassureSlice = createSlice({
         })
         builder.addCase(getAllFlowMeter.fulfilled, (state, action)=>{
             const data = action.payload
-            console.log(data)
             state.PS_A = data.pressuareSensorModel.polynom.a
             state.PS_B = data.pressuareSensorModel.polynom.b
             state.PS_C = data.pressuareSensorModel.polynom.c 
@@ -50,7 +49,6 @@ export const preassureSlice = createSlice({
         })
         builder.addCase(getCoefPreassureMeter.fulfilled, (state, action)=>{
             const data = action.payload
-            console.log(data)
             state.preassure = data.preassure
             state.value = data.value
         })

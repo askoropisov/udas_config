@@ -6,8 +6,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { setPeaks } from '../../API/main/peaks';
 import { setPeak356, setPeak81 } from '../../redux/main/peaksSlice';
-import { getAllMain } from '../../API/main/generalMain';
 import axios from "axios";
+import { getSpectrums } from '../../API/main/spectrumType';
 
 
 function Spectrum(props) {
@@ -57,12 +57,20 @@ function Spectrum(props) {
         }))
     }, [])
 
+    useEffect(() => {
+        const interval = setInterval(
+            () =>
+                dispatch(getSpectrums()), 5000
+        )
+        return () => clearInterval(interval)
+    }, [])
+
 
     const renderLineChart = (
         <div style={{ width: '70%', height:"74vh", maxWidth:"100%" }}>
             <ResponsiveContainer >
                 <LineChart data={datas}
-                    margin={{ top: 5, right: 30, bottom: 10, left: 15 }}>
+                    margin={{ top: 5, right: 30, bottom: 10, left: 60 }}>
                     <Line type="monotone" dataKey="Энергия" stroke="#12bf51" animateNewValues={false} />
                     <CartesianGrid stroke="#ccc" />
                     <XAxis dataKey="Activity" fontSize={16} />
