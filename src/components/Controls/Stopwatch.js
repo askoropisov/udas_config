@@ -26,22 +26,16 @@ function Timer(props) {
   useInterval(() => {
     if (!timerOn) return;
 
-    setCentiseconds((centiseconds) =>
-      centiseconds === 99 ? 0 : centiseconds + 1
-    );
-  }, 10);
-
-  useInterval(() => {
-    if (!timerOn) return;
-
-    setSeconds((seconds) => (seconds === 59 ? 0 : seconds + 1));
-  }, 1000);
-
-  useInterval(() => {
-    if (!timerOn) return;
-
-    setMinutes((minutes) => (minutes === 59 ? 0 : minutes + 1));
-  }, 60000);
+    setCentiseconds((centiseconds) => (centiseconds === 90 ? 0 : centiseconds + 10));
+    if(centiseconds % 1000 === 0) {
+      setSeconds((seconds) => (seconds === 59 ? 0 : seconds + 1));
+      if(seconds === 59) {
+        setSeconds(0)
+        setMinutes(minutes + 1)
+      }
+      else setSeconds(seconds + 1)
+    }    
+  }, 100)
 
   return (
     <>

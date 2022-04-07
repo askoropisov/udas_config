@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { getAllMain } from "../../API/main/generalMain"
-import { getTypePrimary } from "../../API/main/spectrumType"
+import { getSpectrums} from "../../API/main/spectrumType"
 
 const init = {
     primary: (new Array(100).fill(1).map((data, index) => {
@@ -43,11 +43,19 @@ export const spectrumType = createSlice({
         builder.addCase(getAllMain.rejected, (state, action) =>{
             console.log(action)
         })
-        builder.addCase(getTypePrimary.fulfilled, (state, action) => {
+        builder.addCase(getSpectrums.fulfilled, (state, action) => {
             const data = action.payload
-            state.primary = data
+            console.log("update plot")
+            state.primary = data.primary
+            state.back = data.back
         })
+        builder.addCase(getSpectrums.rejected, (state, action) =>{
+            console.log(action)
+        })
+
     }
 })
+
+export const { setType} =  spectrumType.actions
 
 export default spectrumType.reducer;
