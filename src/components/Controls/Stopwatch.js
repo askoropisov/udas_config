@@ -22,7 +22,7 @@ function Timer(props) {
             .then(res => console.log("stopPump", res))
             .catch(err => console.log("Error", err))
     setTimerOn(false)
-    props.getTime(minutes+":"+seconds+":"+centiseconds)
+    props.getTime(minutes+":"+seconds)
   }
 
   useInterval(() => {
@@ -42,8 +42,7 @@ function Timer(props) {
   return (
     <>
       <div>
-        {String(minutes).padStart(2, "0")} : {String(seconds).padStart(2, "0")}{" "}
-        : {String(centiseconds).padStart(2, "0")}
+        {String(minutes).padStart(2, "0")} : {String(seconds).padStart(2, "0")}
       </div>
       <div>
         {timerOn === false && (
