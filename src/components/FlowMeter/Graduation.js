@@ -18,11 +18,13 @@ function Graduation(props) {
         Kc,
         Kd } = useSelector(state => state.flowMeter.graduation)
 
+    //запрос обработки введенных значений 
     const handlePostPoints = async () => {
         dispatch(getPolynom())
         setPlot(true)
     }
 
+    //очистка введенных данных и повтор ввода с 1 точки
     const handleNullGrad = async () => {
         await axios.post("/api/flowmeter/grad/clear")
             .then(res => console.log("points delete", res))
@@ -32,12 +34,15 @@ function Graduation(props) {
         setCoefGrad(0)
     }
 
+    //переход к вводу значний для следующей точки
     const handleSendForm = async (data) => {
         console.log(data)
         dispatch(setCoefGrad(data))
         setCurrentId(prev => prev + 1)
     }
 
+
+    //вывод полученных коэф-ов и полинома
     const renderLineChart = (
         <div>
             <div>
@@ -53,6 +58,7 @@ function Graduation(props) {
                 </div>
                 <br></br>
             </div>
+            {/* График, полученный с помощью Recharts библиотеки */}
             <div style={{ width: '100%', height: "52vh", maxWidth: "100%" }}>
                 <ResponsiveContainer >
                     <LineChart data={polynom}
@@ -75,6 +81,7 @@ function Graduation(props) {
                 <PointForm
                     id={currentId}
                     key={"param#" + currentId}
+                    // Функция, вызивыемая в Point
                     setNextForm={(data) => handleSendForm(data)}/>
             </div>
             <div style={{ display: 'flex', justifyContent: "space-evenly", marginTop: 30 }}>

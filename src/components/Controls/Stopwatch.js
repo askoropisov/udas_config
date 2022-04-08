@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState, useRef, useEffect} from "react";
 import { Button } from "react-bootstrap";
 
+
+//простой секундомер по логике SetInterval
 function Timer(props) {
   const [centiseconds, setCentiseconds] = useState(0);
   const [seconds, setSeconds] = useState(0);
@@ -63,8 +65,6 @@ function Timer(props) {
   );
 }
 
-
-// source: https://overreacted.io/making-setinterval-declarative-with-react-hooks/
 function useInterval(callback, delay) {
   const savedCallback = useRef();
 

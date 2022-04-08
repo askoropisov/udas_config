@@ -17,6 +17,7 @@ function App() {
       configureAxios()
     }, [])
   
+    //подписка на общие запросы 
     useEffect(() => {
       dispatch(getAllFlowMeter())
           

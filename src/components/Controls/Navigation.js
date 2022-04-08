@@ -9,6 +9,7 @@ function Navigation(props) {
 
     return (
         <div>
+            {/* Навигация горизонтальная */}
             <Tabs 
                 defaultActiveKey="spectrum"
                 transition={false}

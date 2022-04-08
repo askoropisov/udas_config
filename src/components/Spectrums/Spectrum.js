@@ -35,6 +35,7 @@ function Spectrum(props) {
         dispatch(setPeaks(data))
     }
 
+    //загрузка файла опорного спектра
     const clickHaldle = async (file) => {
         const data = new FormData();
 
@@ -48,14 +49,14 @@ function Spectrum(props) {
             .catch(err => console.log("Not uploaded:", err))
     }
 
-    useEffect(() => {
-        setDatas(new Array(100).fill(0).map((data, index) => {
-            return ({
-                Activity: index + 1,
-                Энергия: (Math.random() * 1000).toFixed(0)
-            })         
-        }))
-    }, [])
+    // useEffect(() => {
+    //     setDatas(new Array(100).fill(0).map((data, index) => {
+    //         return ({
+    //             Activity: index + 1,
+    //             Энергия: (Math.random() * 1000).toFixed(0)
+    //         })         
+    //     }))
+    // }, [])
 
     useEffect(() => {
         const interval = setInterval(
@@ -65,7 +66,7 @@ function Spectrum(props) {
         return () => clearInterval(interval)
     }, [])
 
-
+    //отрисовка графика на основе данных с датчиков
     const renderLineChart = (
         <div style={{ width: '70%', height:"74vh", maxWidth:"100%" }}>
             <ResponsiveContainer >
@@ -90,6 +91,7 @@ function Spectrum(props) {
                 <div style={{ alignItems: "flex-end", justifyContent: "flex-start" }} >
                     <h4>Выбор спектра</h4>
 
+                    {/* Выбор спектра с каждого датчика по кнопкам */}
                     <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 30}}>
                         <Button onClick={() => setDatas(new Array(primary.length/2).fill(0).map((data, index) => {
                                     return ({
@@ -113,7 +115,7 @@ function Spectrum(props) {
                     </div>
                     
 
-                    
+                    {/* Установка пиковых значений и загрузка опорного спектра */}
                     <div style={{display: "block"}}>
                         <br></br>
                         <div>
@@ -139,7 +141,7 @@ function Spectrum(props) {
                         <Button type="submit" onClick={clickHaldle}>Добавить опорный спектр</Button>
                     </div>
                 </div>
-
+                {/* отображение графика */}
                 {renderLineChart}
             </div>
         </div>

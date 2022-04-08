@@ -48,6 +48,7 @@ export const flowMeterSlice = createSlice({
         builder.addCase(getAllFlowMeter.rejected, (state, action) =>{
             console.log(action)
         })
+        //запрос раз в 1с
         builder.addCase(getCoefFlowMeter.fulfilled, (state, action)=>{
             const data = action.payload
             state.flow = data.flow

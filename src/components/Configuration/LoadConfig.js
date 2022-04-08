@@ -10,8 +10,7 @@ function LoadConfig(props) {
         const data = new FormData();
 
         var files = currFile.target.files
-        console.log(files);
-
+        //добавляем выбранный файл к данным для загрузки
         data.append(files[0].name, files[0])
 
         await axios.post("/api/configuration/load/load", data)
@@ -22,10 +21,11 @@ function LoadConfig(props) {
     const LoadHandle = async () => {
         return await axios.post("/api/configuration/load/downloading")
             .then(res => {
-                console.log("downloaded:", res)
+                ///задаем имя файлу в виде текущей даты
                 var name = new Date();
                 var datename =  name.getFullYear()+'_'+(name.getMonth()+1)+'_'+name.getDate()+'_'+name.getHours()+':'+name.getMinutes();
-
+                
+                //подготавливаем документ к загрузке
                 const url = window.URL.createObjectURL(new Blob([res.data]));
                 const link = document.createElement('a');
                 link.href = url;

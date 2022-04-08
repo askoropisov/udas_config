@@ -38,6 +38,7 @@ export const graduationSlice = createSlice({
         builder.addCase(setCoefGrad.rejected, (state, action) => {
             console.log(action)
         })
+        //получение графика градуировки
         builder.addCase(getPolynom.fulfilled, (state, action) => {
             const data = action.payload
             state.polynom = new Array(data.polynom.length).fill(0).map((_, index) => {

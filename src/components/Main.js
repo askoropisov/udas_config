@@ -6,9 +6,7 @@ function Main(props){
     return(
         <div>
             <h1>"УДАС-03"</h1>
-
             <Navigation/>
-            
         </div>
     )
 }

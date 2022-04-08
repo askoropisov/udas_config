@@ -12,6 +12,7 @@ function ConfigurationMenu(props){
 
     return(
         <div>
+            {/* Гамбургер меню */}
             <Tab.Container id="left-tabs-example" defaultActiveKey="SpectrometersConfig">
                 <Row>
                     <Col sm={3} md={3} xl={3}>

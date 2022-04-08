@@ -12,7 +12,9 @@ function Flap(props) {
     var image = close
 
     const { isOpen } = useSelector(state => state.flowMeter.flap)
+
     var statusWord;
+    //меняем картинку и записи в зависимости от полученных данных
     if (isOpen === true)
     { 
         statusWord = "открыта"

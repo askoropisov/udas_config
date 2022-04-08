@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
+//гет и сет запросы через обещания
 export const setIsOpenLoopsAsync = createAsyncThunk(
     'configuration/currentloops/setIsOpenLoops',
     async (isOn) => {

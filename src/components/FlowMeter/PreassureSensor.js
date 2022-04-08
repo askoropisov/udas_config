@@ -10,6 +10,7 @@ function PreassureSensor(props) {
 
     const dispatch = useDispatch();
 
+    //получение данных с свервера с интервалом в 1 с
     useEffect(() => {
         const interval = setInterval(
             () =>
@@ -42,7 +43,7 @@ function PreassureSensor(props) {
     return (
         <div>
 
-            <img src={logo} width="100" alt="temperature"></img>
+            <img src={logo} width="100" alt="preassure"></img>
             <br></br>
             Давление: {preassure} Па
             <br></br>

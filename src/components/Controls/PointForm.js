@@ -5,6 +5,7 @@ import { getACP } from "../../API/flowMeter/graduation";
 import { setCoefK, setCoeft, setCoefV1a, setCoefV1b } from "../../redux/flowMeter/graduation/graduationSlice";
 import Timer from "./Stopwatch";
 
+//шаблон формы для ввода данных точки градуировки
 
 function PointForm(props) {
 
@@ -32,6 +33,7 @@ function PointForm(props) {
         dispatch(setCoeft(data))
     }
 
+    //получение данных с АЦП
     const handleACP = async () => {
         setCoefK(dispatch(getACP()))
     }
@@ -47,7 +49,8 @@ function PointForm(props) {
                     <br></br>
                     <Button onClick={handleACP}>Получить</Button>
                 </div>
-                <div>   
+                <div>
+                    {/* секундомер и управление насосом */}
                     <label>Время измерения</label> <br></br>              
                     <Timer
                         getTime = {(data)=> handleTime(data)}></Timer>
@@ -61,6 +64,7 @@ function PointForm(props) {
                     <input className='input' type="number" id="V1b" value={V1b} onChange={(e) => dispatch(setCoefV1b(e.target.value))} />
                 </div>
                 <div style={{ display: 'flex', justifyContent: "space-evenly", marginTop: 30 }}>
+                    {/* Используем функцию setNextForm из родительского компонента и передаем в нее данные */}
                     <Button onClick={(data) => props.setNextForm(getData(data))}>Следующая точка</Button>
                 </div>
             </div>

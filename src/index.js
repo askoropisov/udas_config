@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
+//подключение реакта
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

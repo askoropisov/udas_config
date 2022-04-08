@@ -1,5 +1,7 @@
 import axios from "axios"
 
+
+//перехватчик запросов для добавления адреса хоста
 const configureAxios = () => {
     axios.interceptors.request.use(config => {
         if (process.env.NODE_ENV === "development") {
