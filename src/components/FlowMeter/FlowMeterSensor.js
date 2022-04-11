@@ -58,22 +58,22 @@ function FlowMeterSensor(props) {
                 <tbody>
                     <tr>
                         <td width={200}>A</td>
-                        <td width={300}><input id="FM_A" value={FM_A} type={'number'}
+                        <td width={300}><input id="FM_A" value={FM_A.toExponential()} type={'number'}
                             className='input' onChange={(e) => dispatch(setFlowA(e.target.value))} /></td>
                     </tr>
                     <tr>
                         <td>B</td>
-                        <td><input id="FM_B" value={FM_B} type={'number'}
+                        <td><input id="FM_B" value={FM_B.toExponential()} type={'number'}
                             className='input' onChange={(e) => dispatch(setFlowB(e.target.value))} /></td>
                     </tr>
                     <tr>
                         <td>C</td>
-                        <td><input id="FM_C" value={FM_C} type={'number'}
+                        <td><input id="FM_C" value={FM_C.toExponential()} type={'number'}
                             className='input' onChange={(e) => dispatch(setFlowC(e.target.value))} /></td>
                     </tr>
                     <tr>
                         <td>D</td>
-                        <td><input id="FM_D" value={FM_D} type={'number'}
+                        <td><input id="FM_D" value={FM_D.toExponential()} type={'number'}
                             className='input' onChange={(e) => dispatch(setFlowD(e.target.value))} /></td>
                     </tr>
                 </tbody>

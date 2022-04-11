@@ -24,7 +24,6 @@ function PreassureSensor(props) {
         PS_B,
         PS_C,
         PS_D,
-        value,
         preassure } = useSelector(state => state.flowMeter.preassureSensor);
 
 
@@ -58,28 +57,26 @@ function PreassureSensor(props) {
                 <tbody>
                     <tr>
                         <td width={200}>A</td>
-                        <td width={300}><input id="PS_A" value={PS_A} type={'number'}
+                        <td width={300}><input id="PS_A" value={PS_A.toExponential()} type={'number'}
                             onChange={(e) => dispatch(setPreassureA(e.target.value))} className='input' /></td>
                     </tr>
                     <tr>
                         <td>B</td>
-                        <td><input id="PS_B" value={PS_B} type={'number'}
+                        <td><input id="PS_B" value={PS_B.toExponential()} type={'number'}
                             onChange={(e) => dispatch(setPreassureB(e.target.value))} className='input' /></td>
                     </tr>
                     <tr>
                         <td>C</td>
-                        <td><input id="PS_C" value={PS_C} type={'number'}
+                        <td><input id="PS_C" value={PS_C.toExponential()} type={'number'}
                             onChange={(e) => dispatch(setPreassureC(e.target.value))} className='input' /></td>
                     </tr>
                     <tr>
                         <td>D</td>
-                        <td><input id="PS_D" value={PS_D} type={'number'}
+                        <td><input id="PS_D" value={PS_D.toExponential()} type={'number'}
                             onChange={(e) => dispatch(setPreassureD(e.target.value))} className='input' /></td>
                     </tr>
                 </tbody>
             </Table>
-            <br></br>
-            Значение: {value}
             <br></br>
             <Button onClick={handleSetK}>Установить</Button>
         </div>

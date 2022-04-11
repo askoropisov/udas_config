@@ -49,12 +49,12 @@ function Graduation(props) {
                 <h3>Полученные коэффициенты</h3>
                 <br></br>
                 <div style={{ display: 'flex', justifyContent: "space-evenly" }}>
-                    <div> A:  {Ka}  </div>
-                    <div> B:  {Kb}  </div>
+                    <div> A:  {Ka.toExponential(6)} </div>
+                    <div> B:  {Kb.toExponential(6)}  </div>
                 </div>
                 <div style={{ display: 'flex', justifyContent: "space-evenly" }}>
-                    <div> C:  {Kc}  </div>
-                    <div> D:  {Kd}  </div>
+                    <div> C:  {Kc.toExponential(6)}  </div>
+                    <div> D:  {Kd.toExponential(6)}  </div>
                 </div>
                 <br></br>
             </div>
@@ -62,7 +62,7 @@ function Graduation(props) {
             <div style={{ width: '100%', height: "52vh", maxWidth: "100%" }}>
                 <ResponsiveContainer >
                     <LineChart data={polynom}
-                        margin={{ top: 5, right: 30, bottom: 10, left: 15 }}>
+                        margin={{ top: 5, right: 0, bottom: 10, left: 25 }}>
                         <Line type="monotone" dataKey="Энергия" stroke="#12bf51" animateNewValues={false} />
                         <CartesianGrid stroke="#ccc" />
                         <XAxis dataKey="Activity" fontSize={16} />
