@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/esm/Button';
 import './Spectrum.css'
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { setPeaks } from '../../API/main/peaks';
@@ -18,7 +18,7 @@ function Spectrum(props) {
 
     const {
         Peak81,
-        Peak356,         
+        Peak356,
     } = useSelector(state => state.main.peaks);
 
     const {
@@ -34,6 +34,13 @@ function Spectrum(props) {
         }
         dispatch(setPeaks(data))
     }
+
+    const myData = {
+        type: 'line',
+        series: [
+          { values: [1,2,4,5,6] }
+        ]
+      };
 
     //загрузка файла опорного спектра
     const clickHaldle = async (file) => {
@@ -68,16 +75,16 @@ function Spectrum(props) {
 
     //отрисовка графика на основе данных с датчиков
     const renderLineChart = (
-        <div style={{ width: '70%', height:"74vh", maxWidth:"100%" }}>
+        <div style={{ width: '70%', height: "74vh", maxWidth: "100%" }}>
             <ResponsiveContainer >
                 <LineChart data={datas}
-                    margin={{ top: 5, right: 30, bottom: 10, left: 60 }}>
+                    margin={{ top: 5, right: 30, bottom: 10, left: 75 }}>
                     <Line type="monotone" dataKey="Энергия" stroke="#12bf51" animateNewValues={false} />
                     <CartesianGrid stroke="#ccc" />
                     <XAxis dataKey="Activity" fontSize={16} />
-                    <YAxis/>
+                    <YAxis />
                     <Legend />
-                    <Tooltip animationDuration={0}/>
+                    <Tooltip animationDuration={0} />
                 </LineChart>
             </ResponsiveContainer>
         </div>
@@ -86,47 +93,47 @@ function Spectrum(props) {
     return (
         <div>
             <h2>Спектрометры</h2>
-            <div style={{ display: 'flex', justifyContent: "space-around",  marginTop: 40 }}>
+            <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 40 }}>
 
                 <div style={{ alignItems: "flex-end", justifyContent: "flex-start" }} >
                     <h4>Выбор спектра</h4>
 
                     {/* Выбор спектра с каждого датчика по кнопкам */}
-                    <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 30}}>
-                        <Button onClick={() => setDatas(new Array(primary.length/2).fill(0).map((data, index) => {
-                                    return ({
-                                        Activity: index + 1,
-                                        Энергия: primary[index]
-                                    })
-                            }))}>Основной</Button>
+                    <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 30 }}>
+                        <Button onClick={() => setDatas(new Array(1820).fill(0).map((data, index) => {
+                            return ({
+                                Activity: index + 1,
+                                Энергия: primary[index]
+                            })
+                        }))}>Основной</Button>
 
-                        <Button onClick={() => setDatas(new Array(back.length/2).fill(0).map((data, index) => {
-                                    return ({
-                                        Activity: index + 1,
-                                        Энергия: back[index]
-                                    })
-                            }))}>Фоновый</Button>
+                        <Button onClick={() => setDatas(new Array(back.length / 4).fill(0).map((data, index) => {
+                            return ({
+                                Activity: index + 1,
+                                Энергия: back[index]
+                            })
+                        }))}>Фоновый</Button>
                         <Button onClick={() => setDatas(new Array(ref.length).fill(0).map((data, index) => {
-                                    return ({
-                                        Activity: index + 1,
-                                        Энергия: ref[index]
-                                    })
-                            }))}>Опорный</Button>
+                            return ({
+                                Activity: index + 1,
+                                Энергия: ref[index]
+                            })
+                        }))}>Опорный</Button>
                     </div>
-                    
+
 
                     {/* Установка пиковых значений и загрузка опорного спектра */}
-                    <div style={{display: "block"}}>
+                    <div style={{ display: "block" }}>
                         <br></br>
                         <div>
-                            <label htmlFor="peak81" style={{display: "block"}} >Пик 81</label>
-                            <input id="peak81" value = {Peak81} className='input' type={'number'}
-                                   onChange={(e) => dispatch(setPeak81(e.target.value))} />
+                            <label htmlFor="peak81" style={{ display: "block" }} >Пик 81</label>
+                            <input id="peak81" value={Peak81} className='input' type={'number'}
+                                onChange={(e) => dispatch(setPeak81(e.target.value))} />
                         </div>
                         <div>
-                            <label htmlFor="peak356" style={{display: "block"}}>Пик 356</label>
-                            <input id="peak356" value = {Peak356} className='input' type={'number'} 
-                                   onChange={(e) => dispatch(setPeak356(e.target.value))}/>
+                            <label htmlFor="peak356" style={{ display: "block" }}>Пик 356</label>
+                            <input id="peak356" value={Peak356} className='input' type={'number'}
+                                onChange={(e) => dispatch(setPeak356(e.target.value))} />
                         </div>
                         <br></br>
                         <Button onClick={handleSetPeaks}>Установить</Button>
@@ -135,7 +142,7 @@ function Spectrum(props) {
                         <form action="" method="post" encType="multipart/form-data">
                             <br></br>
                             <br></br>
-                        	<input type="file" name="file" className="form-control" accept=".txt,.json" onChange={setCurrFile}/>
+                            <input type="file" name="file" className="form-control" accept=".txt,.json" onChange={setCurrFile} />
                         </form>
                         <br></br>
                         <Button type="submit" onClick={clickHaldle}>Добавить опорный спектр</Button>

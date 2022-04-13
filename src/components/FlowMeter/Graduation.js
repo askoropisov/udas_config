@@ -81,11 +81,12 @@ function Graduation(props) {
                 <PointForm
                     id={currentId}
                     key={"param#" + currentId}
-                    // Функция, вызивыемая в Point
+                    // Функция, вызывыемая в Point
                     setNextForm={(data) => handleSendForm(data)}/>
             </div>
             <div style={{ display: 'flex', justifyContent: "space-evenly", marginTop: 30 }}>
-                <Button onClick={(data) => handlePostPoints(data)}>Закончить ввод</Button>
+                {/* запуск градуировки */}
+                <Button onClick={(data) => handlePostPoints(data)} disabled={currentId<5}>Закончить ввод</Button>
                 <Button onClick={handleNullGrad}>Начать заново</Button>
             </div>
         </div>
