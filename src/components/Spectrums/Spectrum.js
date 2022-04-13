@@ -35,13 +35,6 @@ function Spectrum(props) {
         dispatch(setPeaks(data))
     }
 
-    const myData = {
-        type: 'line',
-        series: [
-          { values: [1,2,4,5,6] }
-        ]
-      };
-
     //загрузка файла опорного спектра
     const clickHaldle = async (file) => {
         const data = new FormData();
@@ -56,14 +49,6 @@ function Spectrum(props) {
             .catch(err => console.log("Not uploaded:", err))
     }
 
-    // useEffect(() => {
-    //     setDatas(new Array(100).fill(0).map((data, index) => {
-    //         return ({
-    //             Activity: index + 1,
-    //             Энергия: (Math.random() * 1000).toFixed(0)
-    //         })         
-    //     }))
-    // }, [])
 
     useEffect(() => {
         const interval = setInterval(
