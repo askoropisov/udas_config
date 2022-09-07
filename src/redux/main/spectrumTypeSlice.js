@@ -35,6 +35,7 @@ export const spectrumType = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getAllMain.fulfilled, (state, action)=>{
             const data = action.payload
+            console.log(data);
             state.primary=data.primary;
             state.back=data.back;
             state.ref=data.reference;
@@ -46,6 +47,7 @@ export const spectrumType = createSlice({
             const data = action.payload
             state.primary = data.primary
             state.back = data.back
+            console.log(data);
         })
         builder.addCase(getSpectrums.rejected, (state, action) =>{
             console.log(action)
