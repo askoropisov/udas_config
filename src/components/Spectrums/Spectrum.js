@@ -25,9 +25,18 @@ function Spectrum(props) {
         primary,
         back,
         ref,
+        spectrometersPath,
     } = useSelector(state => state.main.spectrumType);
 
     const handleSetPeaks = () => {
+        const data = {
+            peak81: Peak81,
+            peak356: Peak356,
+        }
+        dispatch(setPeaks(data))
+    }
+
+    const handleSetCompliance = () => {
         const data = {
             peak81: Peak81,
             peak356: Peak356,
@@ -55,7 +64,6 @@ function Spectrum(props) {
                 dispatch(getSpectrums())
                     .unwrap()
                     .then((res) => {
-                        console.log(res.primary)
                         setDatas(new Array(res.primary.length / 2).fill(0).map((data, index) => {
                             const primary = res.primary
                             return ({
@@ -69,23 +77,6 @@ function Spectrum(props) {
         )
         return () => clearInterval(interval)
     }, [datas])
-
-    //отрисовка графика на основе данных с датчиков
-    const renderLineChart = (
-        <div style={{ width: '70%', height: "74vh", maxWidth: "100%" }}>
-            <ResponsiveContainer >
-                <LineChart data={datas}
-                    margin={{ top: 5, right: 30, bottom: 10, left: 75 }}>
-                    <Line type="monotone" dataKey="Энергия" stroke="#12bf51" animateNewValues={false} />
-                    <CartesianGrid stroke="#ccc" />
-                    <XAxis dataKey="Activity" fontSize={16} />
-                    <YAxis />
-                    <Legend />
-                    <Tooltip animationDuration={0} />
-                </LineChart>
-            </ResponsiveContainer>
-        </div>
-    );
 
     const data = [
         {
@@ -194,22 +185,36 @@ function Spectrum(props) {
                             <input id="peak356" value={Peak356} className='input' type={'number'}
                                 onChange={(e) => dispatch(setPeak356(e.target.value))} />
                         </div>
-                        <br></br>
                         <Button onClick={handleSetPeaks}>Установить</Button>
+                    </div>
+                    <div>
+                        <br></br>
+                        {/* заполнение выпадающего списка из массива с сервера */}
+                        <select className='select' id="addingList">
+                            {spectrometersPath.map((value) =>
+                                <option>{value}</option>
+                            )}
+
+                        </select>
+                        <br></br>
+                        <select className='select'>
+                            <option>Основной</option>
+                            <option>Второстепенный</option>
+                            <option>Фоновый</option>
+                        </select>
+                        <br></br>
+                        <Button onClick={handleSetCompliance}>Установить</Button>
                     </div>
                     <div>
                         <form action="" method="post" encType="multipart/form-data">
                             <br></br>
-                            <br></br>
                             <input type="file" name="file" className="form-control" accept=".txt,.json" onChange={setCurrFile} />
                         </form>
-                        <br></br>
                         <Button type="submit" onClick={clickHaldle}>Добавить опорный спектр</Button>
                     </div>
                 </div>
 
                 {MyResponsiveLine}
-                {/* {renderLineChart} */}
             </div>
         </div>
     )

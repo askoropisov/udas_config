@@ -24,4 +24,16 @@
     height: 2.8ch;
     vertical-align: middle;
     text-align: center;
+    border-width: 0.7mm;
+    border-color: black;
+}
+
+.select {
+    border-radius: 12px;
+    vertical-align: middle;
+    text-align: center;
+    width: 17ch;
+    height: 2.8ch;
+    border-width: 0.7mm;
+    border-color: black;
 }
