@@ -2,9 +2,9 @@ import Button from 'react-bootstrap/esm/Button';
 import './Spectrum.css'
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
-import { setPeaks } from '../../API/main/peaks';
+import { setCompliance, setPeaks } from '../../API/main/peaks';
 import { setPeak356, setPeak81 } from '../../redux/main/peaksSlice';
 import axios from "axios";
 import { getSpectrums } from '../../API/main/spectrumType';
@@ -15,6 +15,18 @@ function Spectrum(props) {
     const dispatch = useDispatch();
     const [datas, setDatas] = useState([])
     const [currFile, setCurrFile] = useState(null)
+    const [spectumPath, setPath] = useState(null)
+    const [spectumType, setType] = useState(0)
+
+    const spectumPathRef = useRef()
+    const spectumTypeRef = useRef()
+
+    // useEffect(() => {
+    //     setInterval(() => {
+    //         console.log("spectumPathRef = ", spectumPathRef.current.value)
+
+    //     }, 1000)
+    // }, [spectumPath])
 
     const {
         Peak81,
@@ -38,10 +50,12 @@ function Spectrum(props) {
 
     const handleSetCompliance = () => {
         const data = {
-            peak81: Peak81,
-            peak356: Peak356,
+            path: spectumPath,
+            type: spectumType,
         }
-        dispatch(setPeaks(data))
+        console.log("PathType: ", typeof(spectumPath))
+        dispatch(setCompliance(data))
+        console.log("data:", data)
     }
 
     //загрузка файла опорного спектра
@@ -85,6 +99,7 @@ function Spectrum(props) {
             "data": datas
         }
     ];
+
 
     const MyResponsiveLine = (
         <div style={{ width: '70%', height: "74vh", maxWidth: "100%" }}>
@@ -190,17 +205,19 @@ function Spectrum(props) {
                     <div>
                         <br></br>
                         {/* заполнение выпадающего списка из массива с сервера */}
-                        <select className='select' id="addingList">
-                            {spectrometersPath.map((value) =>
-                                <option>{value}</option>
+                        <select className='select' id="selectItem" ref={spectumPathRef} onChange={(event) => setPath(event.target.value)}>
+                            <option value='0'>Не выбрано</option>
+                            {spectrometersPath.map((value, index) =>
+                                <option key={index} value={value} >{value}</option>
                             )}
 
                         </select>
                         <br></br>
-                        <select className='select'>
-                            <option>Основной</option>
-                            <option>Второстепенный</option>
-                            <option>Фоновый</option>
+                        <select className='select' id="selectItem" ref={spectumTypeRef} onChange={(event) => setType(event.target.value)}>
+                            <option value="0" selected>Не выбран</option>
+                            <option value="1" selected>Основной</option>
+                            <option value="2">Второстепенный</option>
+                            <option value="3">Фоновый</option>
                         </select>
                         <br></br>
                         <Button onClick={handleSetCompliance}>Установить</Button>

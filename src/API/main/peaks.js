@@ -16,6 +16,20 @@ export const setPeaks = createAsyncThunk(
     },
 )
 
+export const setCompliance = createAsyncThunk(
+    'main/setCompliance',
+    async (k) => {
+        const response = await axios.post("/api/main/setCompliance", k)
+            .then(res => console.log("res:", res))
+            .catch(err => {
+                console.log("err:", err)
+                return Promise.reject()
+            }
+            )
+        return response
+    },
+)
+
 export const getPeaks = createAsyncThunk(
     'main/getPeaks',
     async () => {
