@@ -19,7 +19,7 @@ function LoadConfig(props) {
     }
 
     const LoadHandle = async () => {
-        return await axios.post("/api/configuration/load/downloading")
+        return await axios.get("/api/configuration/load/downloading", {responseType: 'arraybuffer'})
             .then(res => {
                 ///задаем имя файлу в виде текущей даты
                 var name = new Date();
@@ -29,7 +29,7 @@ function LoadConfig(props) {
                 const url = window.URL.createObjectURL(new Blob([res.data]));
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', 'Config '+ datename);
+                link.setAttribute('download', 'Config '+ datename+'.zip');
                 document.body.appendChild(link);
                 link.click();
             })
@@ -46,7 +46,7 @@ function LoadConfig(props) {
             	<label>Скачайте текущую конфигурацию или загрузите новую</label>
                 <br></br>
                 <br></br>
-            	<input type="file" name="file" className="form-control" accept=".txt,.json" onChange={setCurrFile}/>
+            	<input type="file" name="file" className="form-control" accept=".zip,.rar,.gz,.tar,.tgz" onChange={setCurrFile}/>
             </form>
 
             <br></br>
