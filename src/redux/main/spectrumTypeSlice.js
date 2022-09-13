@@ -21,6 +21,7 @@ const init = {
             Count: (Math.random() * 1000).toFixed(0)
         })
     })),
+    reference: new Array(1),
     spectrometersPath: new Array(1),
 }
 
@@ -41,6 +42,7 @@ export const spectrumType = createSlice({
             state.back=data.back;
             state.ref=data.reference;
             state.spectrometersPath=data.spectrometersPath;
+            state.reference=data.references;
         })
         builder.addCase(getAllMain.rejected, (state, action) =>{
             console.log(action)
