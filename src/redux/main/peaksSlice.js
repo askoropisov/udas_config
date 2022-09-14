@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { getAllMain } from "../../API/main/generalMain"
-import { setCompliance, setPeaks, setRefAsync } from "../../API/main/peaks"
+import { setCompliance, setPeaks, setRefAsync, setDirectory } from "../../API/main/peaks"
 
 const init = {
     Peak81: 100,
@@ -43,6 +43,9 @@ export const peaksSlice = createSlice({
         builder.addCase(setCompliance.rejected, (state, action) => {
             console.log(action)
         })
+        builder.addCase(setRefAsync.fulfilled, (state, action) => {
+            console.log(action)
+        })
         builder.addCase(setRefAsync.rejected, (state, action) => {
             console.log(action)
         })
@@ -62,6 +65,7 @@ export const {
     setPeak356,
     setPath,
     setType,
-    setRefSpec } = peaksSlice.actions
+    setRefSpec,
+    setDirectoryPath } = peaksSlice.actions
 
 export default peaksSlice.reducer;

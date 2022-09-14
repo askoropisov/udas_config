@@ -18,10 +18,12 @@ function Spectrum(props) {
     const [spectumPath, setPath] = useState(null)
     const [spectumType, setType] = useState(0)
     const [currentSpectometer, setCurrentSpectrometer] = useState(0)
+    const [Directory, setDirectory] = useState(null)
 
     const spectumPathRef = useRef()
     const spectumTypeRef = useRef()
     const ReferenceRef = useRef()
+    const DirectoryRef = useRef()
 
     const {
         Peak81,
@@ -35,7 +37,6 @@ function Spectrum(props) {
     const {
         primary,
         back,
-        ref,
         spectrometersPath,
         reference,
     } = useSelector(state => state.main.spectrumType);
@@ -228,7 +229,7 @@ function Spectrum(props) {
                     </select>
 
                     {/* Установка пиковых значений и загрузка опорного спектра */}
-                    <div style={{ display: "block" }}>
+                    <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 30 }}>
                         <br></br>
                         <div>
                             <label htmlFor="peak81" style={{ display: "block" }} >Пик 81</label>
@@ -240,8 +241,9 @@ function Spectrum(props) {
                             <input id="peak356" value={Peak356} className='input' type={'number'}
                                 onChange={(e) => dispatch(setPeak356(e.target.value))} />
                         </div>
-                        <Button onClick={handleSetPeaks}>Установить</Button>
+                        
                     </div>
+                    <Button onClick={handleSetPeaks}>Установить</Button>
                     <div>
                         <br></br>
                         {/* заполнение выпадающего списка из массива с сервера */}
@@ -266,6 +268,15 @@ function Spectrum(props) {
                             <br></br>
                             <input type="file" name="file" className="form-control" accept=".txt,.json" onChange={setCurrFile} />
                         </form>
+                        <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 10}}>
+                                <label>Папка:</label>
+                                <select className='select' id="selectItem" style={{width: "10ch"}}
+                                        ref={DirectoryRef} onChange={(event) => dispatch(setDirectory(event.target.value))}>
+                                    <option value="Main">Main</option>
+                                    <option value="OSGI">OSGI</option>
+                                </select>
+                        </div>
+
                         <Button type="submit" onClick={clickHaldle}>Добавить опорный спектр</Button>
                     </div>
                 </div>
