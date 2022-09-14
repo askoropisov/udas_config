@@ -4,8 +4,8 @@ import './Spectrum.css'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
-import { setCompliance, setPeaks } from '../../API/main/peaks';
-import { setPeak356, setPeak81 } from '../../redux/main/peaksSlice';
+import { setCompliance, setPeaks, setRefAsync } from '../../API/main/peaks';
+import { setPeak356, setPeak81, setRefSpec } from '../../redux/main/peaksSlice';
 import axios from "axios";
 import { getSpectrums } from '../../API/main/spectrumType';
 import { ResponsiveLine } from '@nivo/line'
@@ -17,8 +17,7 @@ function Spectrum(props) {
     const [currFile, setCurrFile] = useState(null)
     const [spectumPath, setPath] = useState(null)
     const [spectumType, setType] = useState(0)
-    const [Reference, setRef] = useState(null)
-    const[currentSpectometer, setCurrentSpectrometer] = useState(0)
+    const [currentSpectometer, setCurrentSpectrometer] = useState(0)
 
     const spectumPathRef = useRef()
     const spectumTypeRef = useRef()
@@ -28,6 +27,10 @@ function Spectrum(props) {
         Peak81,
         Peak356,
     } = useSelector(state => state.main.peaks);
+
+    const {
+        Reference
+    } = useSelector(state => state.main.peaks)
 
     const {
         primary,
@@ -45,11 +48,17 @@ function Spectrum(props) {
         dispatch(setPeaks(data))
     }
 
-    const handleSetReference = () =>{
-        const data = {
-            reference: Reference,
-        }
-        dispatch(setRef(data))
+    const handleSetReference = () => {
+
+        console.log("Reference:",Reference);
+        dispatch(setRefAsync(Reference))
+            .unwrap()
+            .then((spectr) => setDatas(new Array(spectr?.length / 2).fill(0).map((data, index) => {
+                return ({
+                    x: index,
+                    y: spectr[index],
+                })
+            })))
     }
 
     const handleSetCompliance = () => {
@@ -57,7 +66,7 @@ function Spectrum(props) {
             path: spectumPath,
             type: spectumType,
         }
-        console.log("PathType: ", typeof(spectumPath))
+        console.log("PathType: ", typeof (spectumPath))
         dispatch(setCompliance(data))
         console.log("data:", data)
     }
@@ -79,29 +88,30 @@ function Spectrum(props) {
     useEffect(() => {
         const interval = setInterval(
             () => {
-                dispatch(getSpectrums())
-                    .unwrap()
-                    .then((res) => {
-                        setDatas(new Array(res.primary.length / 2).fill(0).map((data, index) => {
-                            const primary = res.primary
-                            const back = res.back
-                            const ref = res.ref
-                            if(currentSpectometer===0)
-                            return ({
-                                x: index,
-                                y: primary[index],
-                            })
-                            else if( currentSpectometer===1)
-                            return ({
-                                x: index,
-                                y: back[index],
-                            })
-                            else return ({
-                                x: index,
-                                y: ref[index],
-                            })
-                        }))
-                    })
+                if (currentSpectometer !== 2)
+                    dispatch(getSpectrums())
+                        .unwrap()
+                        .then((res) => {
+                            setDatas(new Array(res.primary.length / 2).fill(0).map((data, index) => {
+                                const primary = res.primary
+                                const back = res.back
+                                const ref = res.ref
+                                if (currentSpectometer === 0)
+                                    return ({
+                                        x: index,
+                                        y: primary[index],
+                                    })
+                                else if (currentSpectometer === 1)
+                                    return ({
+                                        x: index,
+                                        y: back[index],
+                                    })
+                                // else return ({
+                                //     x: index,
+                                //     y: ref[index],
+                                // })
+                            }))
+                        })
 
             }, 1500
         )
@@ -181,36 +191,40 @@ function Spectrum(props) {
 
                     {/* Выбор спектра с каждого датчика по кнопкам */}
                     <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 30 }}>
-                        <Button onClick={() => setDatas(new Array(primary.length / 2).fill(0).map((data, index) => {
+                        <Button onClick={() => {
                             setCurrentSpectrometer(0)
-                            return ({
-                                x: index,
-                                y: primary[index],
-                            })
-                        }))}>Основной</Button>
 
-                        <Button onClick={() => setDatas(new Array(back.length / 2).fill(0).map((data, index) => {
+                            setDatas(new Array(primary.length / 2).fill(0).map((data, index) => {
+                                return ({
+                                    x: index,
+                                    y: primary[index],
+                                })
+                            }))
+                        }}>Основной</Button>
+
+                        <Button onClick={() => {
                             setCurrentSpectrometer(1)
-                            return ({
-                                x: index,
-                                y: back[index],
-                            })
-                        }))}>Фоновый</Button>
-                        <Button onClick={() => setDatas(new Array(ref.length).fill(0).map((data, index) => {
+                            setDatas(new Array(back.length / 2).fill(0).map((data, index) => {
+
+                                return ({
+                                    x: index,
+                                    y: back[index],
+                                })
+                            }))
+                        }}>Фоновый</Button>
+                        <Button onClick={() => {
                             setCurrentSpectrometer(2)
-                            return ({
-                                x: index,
-                                y: ref[index],
-                            })
-                        }))}>Опорный</Button>
+
+                            handleSetReference()
+                        }}>Опорный</Button>
                     </div>
 
                     <select className='select' id="selectItem" ref={ReferenceRef}
-                            onChange={(event) => setRef(event.target.value)}>
-                            <option value='0' selected>Опорный спектр</option>
-                            {reference.map((value, index) =>
-                                <option key={index} value={value} >{value}</option>
-                            )}
+                        onChange={(event) => dispatch(setRefSpec(event.target.value))}>
+                        <option value='0' selected>Опорный спектр</option>
+                        {reference.map((value, index) =>
+                            <option key={index} value={value} >{value}</option>
+                        )}
                     </select>
 
                     {/* Установка пиковых значений и загрузка опорного спектра */}
