@@ -10,35 +10,39 @@ import configureAxios from './utils/axios/configureAxios';
 
 function App() {
 
-    const dispatch = useDispatch();
-  
-    //Тот же useEffect только синхронный
-    useLayoutEffect(() => {
-      configureAxios()
-    }, [])
-  
-    //подписка на общие запросы 
-    useEffect(() => {
-      dispatch(getAllFlowMeter())
-          
-    }, [])
-  
-    useEffect(() => {
-      dispatch(getAllConfiguration())
-    }, [])
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-      dispatch(getAllMain())
+  //Тот же useEffect только синхронный
+  useLayoutEffect(() => {
+    configureAxios()
   }, [])
-  
-  
-    return (
-      <div className="App">
-        <header className="App-header">
+
+  //подписка на общие запросы 
+  useEffect(() => {
+    dispatch(getAllFlowMeter())
+
+  }, [])
+
+  useEffect(() => {
+    dispatch(getAllConfiguration())
+  }, [])
+
+  useEffect(() => {
+    dispatch(getAllMain())
+  }, [])
+
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        {isLogin ?
           <Main />
-        </header>
-      </div>
-    )
+          :
+          <Login />
+        }
+      </header>
+    </div>
+  )
 }
 
 

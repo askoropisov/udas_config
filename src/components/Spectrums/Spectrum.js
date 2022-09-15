@@ -51,7 +51,7 @@ function Spectrum(props) {
 
     const handleSetReference = () => {
 
-        console.log("Reference:",Reference);
+        console.log("Reference:", Reference);
         dispatch(setRefAsync(Reference))
             .unwrap()
             .then((spectr) => setDatas(new Array(spectr?.length / 2).fill(0).map((data, index) => {
@@ -81,7 +81,7 @@ function Spectrum(props) {
 
         data.append(files[0].name, files[0])
 
-        await axios.post("/api/main/addRefSpectrum", data)
+        await axios.post("/api/main/addRefSpectrum", data, { params: { directory: Directory } })
             .then(res => console.log("uploaded:", res))
             .catch(err => console.log("Not uploaded:", err))
     }
@@ -232,7 +232,7 @@ function Spectrum(props) {
                     <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 30 }}>
                         <br></br>
                         <div>
-                            <label htmlFor="peak81" style={{ display: "block" }} >Пик 81</label>
+                             
                             <input id="peak81" value={Peak81} className='input' type={'number'}
                                 onChange={(e) => dispatch(setPeak81(e.target.value))} />
                         </div>
@@ -241,7 +241,7 @@ function Spectrum(props) {
                             <input id="peak356" value={Peak356} className='input' type={'number'}
                                 onChange={(e) => dispatch(setPeak356(e.target.value))} />
                         </div>
-                        
+
                     </div>
                     <Button onClick={handleSetPeaks}>Установить</Button>
                     <div>
@@ -266,15 +266,16 @@ function Spectrum(props) {
                     <div>
                         <form action="" method="post" encType="multipart/form-data">
                             <br></br>
-                            <input type="file" name="file" className="form-control" accept=".txt,.json" onChange={setCurrFile} />
+                            <input type="file" name="file" className="form-control" accept=".spc" onChange={setCurrFile} />
                         </form>
-                        <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 10}}>
-                                <label>Папка:</label>
-                                <select className='select' id="selectItem" style={{width: "10ch"}}
-                                        ref={DirectoryRef} onChange={(event) => dispatch(setDirectory(event.target.value))}>
-                                    <option value="Main">Main</option>
-                                    <option value="OSGI">OSGI</option>
-                                </select>
+                        <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 10 }}>
+                            <label>Папка:</label>
+                            <select className='select' id="selectItem" style={{ width: "13ch" }}
+                                ref={DirectoryRef} onChange={(event) => dispatch(setDirectory(event.target.value))}>
+                                <option value="0">Не выбрана</option>
+                                <option value="Main">Main</option>
+                                <option value="OSGI">OSGI</option>
+                            </select>
                         </div>
 
                         <Button type="submit" onClick={clickHaldle}>Добавить опорный спектр</Button>
