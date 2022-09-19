@@ -35,6 +35,25 @@ export const setRefAsync = createAsyncThunk(
     },
 )
 
+export const addRefAsync = createAsyncThunk(
+    'main/addRef',
+    async (directory) => {
+        console.log("directory:", directory);
+        const response = await axios.post("/api/main/addRefSpectrum", {}, { params: { directory: directory } })
+            .then(res => {
+                console.log("addRef:", res.data)
+
+                return res.data
+            })
+            .catch(err => {
+                console.log("err:", err)
+                return Promise.reject()
+            }
+            )
+        return response
+    },
+)
+
 export const setCompliance = createAsyncThunk(
     'main/setCompliance',
     async (k) => {
