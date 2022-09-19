@@ -232,7 +232,7 @@ function Spectrum(props) {
                     <div style={{ display: 'flex', justifyContent: "space-around", marginTop: 30 }}>
                         <br></br>
                         <div>
-                             
+                            <label htmlFor="peak81" style={{ display: "block" }}>Пик 81</label>
                             <input id="peak81" value={Peak81} className='input' type={'number'}
                                 onChange={(e) => dispatch(setPeak81(e.target.value))} />
                         </div>

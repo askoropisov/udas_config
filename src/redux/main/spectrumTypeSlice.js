@@ -40,7 +40,6 @@ export const spectrumType = createSlice({
             console.log(data);
             state.primary = data.primary;
             state.back = data.back;
-            // state.ref = data.reference ?? [0];
             state.spectrometersPath = data.spectrometersPath;
             state.reference = data.references;
         })

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { getAllMain } from "../../API/main/generalMain"
-import { setCompliance, setPeaks, setRefAsync, setDirectory } from "../../API/main/peaks"
+import { setCompliance, setPeaks, setRefAsync } from "../../API/main/peaks"
 
 const init = {
     Peak81: 100,

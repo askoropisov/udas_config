@@ -41,7 +41,6 @@ function PreassureSensor(props) {
 
     return (
         <div>
-
             <img src={logo} width="100" alt="preassure"></img>
             <br></br>
             Давление: {preassure} Па

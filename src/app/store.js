@@ -9,6 +9,7 @@ import flowMeterSlice from '../redux/flowMeter/flowMeterSensor/flowMeterSlice';
 import graduationSlice from '../redux/flowMeter/graduation/graduationSlice';
 import preassureSlice from '../redux/flowMeter/preassureSensor/preassureSensorSlice';
 import temperatureSlice from '../redux/flowMeter/temperature/temperatureSlice';
+import loginSlice from '../redux/login/loginSlice';
 import peaksSlice from '../redux/main/peaksSlice';
 import spectrumTypeSlice from '../redux/main/spectrumTypeSlice';
 
@@ -31,6 +32,7 @@ export const store = configureStore({
       spectrumType: spectrumTypeSlice,
       peaks: peaksSlice, 
     }),
+      login: loginSlice,
     counter: counterReducer,
   },
 });
