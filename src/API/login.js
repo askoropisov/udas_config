@@ -14,3 +14,16 @@ export const Autorization = createAsyncThunk(
         return response
     },
 )
+
+
+export const CheckLogin = createAsyncThunk(
+    'login/checkLogin',
+    async () => {
+        return await axios.get("/api/login/checkLogin")
+            .then(res => res.data)
+            .catch(err => {
+                console.log("err:", err)
+                return Promise.reject()
+            })
+    }
+)

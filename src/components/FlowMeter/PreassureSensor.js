@@ -57,22 +57,22 @@ function PreassureSensor(props) {
                 <tbody>
                     <tr>
                         <td width={200}>A</td>
-                        <td width={300}><input id="PS_A" value={PS_A} type={'number'}
+                        <td width={300}><input id="PS_A" value={PS_A} type={'number'} style={{width: '15ch'}}
                             onChange={(e) => dispatch(setPreassureA(e.target.value))} className='input' /></td>
                     </tr>
                     <tr>
                         <td>B</td>
-                        <td><input id="PS_B" value={PS_B} type={'number'}
+                        <td><input id="PS_B" value={PS_B} type={'number'} style={{width: '15ch'}}
                             onChange={(e) => dispatch(setPreassureB(e.target.value))} className='input' /></td>
                     </tr>
                     <tr>
                         <td>C</td>
-                        <td><input id="PS_C" value={PS_C} type={'number'}
+                        <td><input id="PS_C" value={PS_C} type={'number'} style={{width: '15ch'}}
                             onChange={(e) => dispatch(setPreassureC(e.target.value))} className='input' /></td>
                     </tr>
                     <tr>
                         <td>D</td>
-                        <td><input id="PS_D" value={PS_D} type={'number'}
+                        <td><input id="PS_D" value={PS_D} type={'number'} style={{width: '15ch'}}
                             onChange={(e) => dispatch(setPreassureD(e.target.value))} className='input' /></td>
                     </tr>
                 </tbody>

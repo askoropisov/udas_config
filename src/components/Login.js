@@ -9,9 +9,8 @@ function Login(props) {
 
     const dispatch = useDispatch();
 
-    const [Login, setLogin] = useState(null) 
-    const [Password, setPassword] = useState(null)
-    const [isLogin, setIsLogin] = useState(false)
+    const [Login, setLogin] = useState("") 
+    const [Password, setPassword] = useState("")
 
     const haldleAutorization = () => {
         const data = {
@@ -19,6 +18,10 @@ function Login(props) {
             password: Password,
         }
         dispatch(Autorization(data))
+        setTimeout(function(){
+            window.location.reload();
+        }, 500)
+
     }
 
     return (
